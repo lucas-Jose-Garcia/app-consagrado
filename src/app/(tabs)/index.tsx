@@ -1,9 +1,19 @@
-import { Text, View } from "react-native";
+import { Conteiner } from "@/components/conteiner";
+import { H1 } from "@/components/text/headings";
+import { colors } from "@/styles/colors";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Home() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Home</Text>
-    </View>
+    <Conteiner>
+      <Conteiner.Box>
+        <MaterialCommunityIcons
+          size={36}
+          name="crown-outline"
+          color={colors.primary["400"]}
+        />
+        <H1>COSAGRADO</H1>
+      </Conteiner.Box>
+    </Conteiner>
   );
 }

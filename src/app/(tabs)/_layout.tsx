@@ -7,6 +7,7 @@ import {
 } from "@expo/vector-icons";
 import Cheer from "@/assets/cheer.svg";
 import Rosary from "@/assets/rosary.svg";
+import { colors } from "@/styles/colors";
 
 export default function TabLayout() {
   return (
@@ -14,7 +15,11 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: { borderWidth: 0 },
+        tabBarStyle: {
+          borderTopWidth: 0,
+          minHeight: 74,
+        },
+        tabBarActiveTintColor: colors.primary["400"],
       }}
     >
       <Tabs.Screen
@@ -22,7 +27,7 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color }) => (
-            <Feather size={24} name="home" color={color} />
+            <MaterialCommunityIcons size={28} name="church" color={color} />
           ),
         }}
       />
@@ -31,7 +36,7 @@ export default function TabLayout() {
         options={{
           title: "Terço",
           tabBarIcon: ({ color }) => (
-            <Rosary width={27} height={27} fill={color} />
+            <Rosary width={28} height={28} fill={color} />
           ),
         }}
       />
@@ -41,7 +46,7 @@ export default function TabLayout() {
           title: "Consagração",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
-              size={27}
+              size={28}
               name="crown-outline"
               color={color}
             />
@@ -53,7 +58,7 @@ export default function TabLayout() {
         options={{
           title: "Orações",
           tabBarIcon: ({ color }) => (
-            <Cheer width={27} height={27} fill={color} />
+            <Cheer width={28} height={28} fill={color} />
           ),
         }}
       />
@@ -62,7 +67,11 @@ export default function TabLayout() {
         options={{
           title: "Liturgia",
           tabBarIcon: ({ color }) => (
-            <Feather size={24} name="book" color={color} />
+            <MaterialCommunityIcons
+              size={28}
+              name="book-outline"
+              color={color}
+            />
           ),
         }}
       />
