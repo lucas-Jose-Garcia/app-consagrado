@@ -1,9 +1,13 @@
-import { Text, View } from "react-native";
+import { Conteiner } from "@/components/conteineres/conteiner";
+import { Text } from "react-native";
 
-export default function Home() {
+export default function Liturgy() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Liturgia</Text>
-    </View>
+    <Conteiner>
+      <Conteiner.Header icone="book-outline" title="Liturgia" />
+      <Conteiner.Box>
+        <Text>Texto</Text>
+      </Conteiner.Box>
+    </Conteiner>
   );
 }

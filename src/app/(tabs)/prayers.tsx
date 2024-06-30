@@ -1,9 +1,14 @@
-import { Text, View } from "react-native";
+import { Conteiner } from "@/components/conteineres/conteiner";
+import { Text } from "react-native";
+import Cheer from "@/assets/cheer.svg";
 
-export default function Home() {
+export default function Prayers() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Oerações</Text>
-    </View>
+    <Conteiner>
+      <Conteiner.Header IconSvg={Cheer} title="Orações" />
+      <Conteiner.Box>
+        <Text>Texto</Text>
+      </Conteiner.Box>
+    </Conteiner>
   );
 }

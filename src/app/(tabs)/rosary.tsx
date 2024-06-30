@@ -1,9 +1,14 @@
-import { Text, View } from "react-native";
+import { Conteiner } from "@/components/conteineres/conteiner";
+import { Text } from "react-native";
+import RosaryIcon from "@/assets/rosary.svg";
 
-export default function Home() {
+export default function Rosary() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Rosário</Text>
-    </View>
+    <Conteiner>
+      <Conteiner.Header IconSvg={RosaryIcon} title="Rosário" />
+      <Conteiner.Box>
+        <Text>Texto</Text>
+      </Conteiner.Box>
+    </Conteiner>
   );
 }

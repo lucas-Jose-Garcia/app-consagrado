@@ -1,18 +1,12 @@
-import { Conteiner } from "@/components/conteiner";
-import { H1 } from "@/components/text/headings";
-import { colors } from "@/styles/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Conteiner } from "@/components/conteineres/conteiner";
+import { Text } from "react-native";
 
 export default function Home() {
   return (
     <Conteiner>
+      <Conteiner.Header title="Salve Maria!" subtitle="Seja bem vindo!" />
       <Conteiner.Box>
-        <MaterialCommunityIcons
-          size={36}
-          name="crown-outline"
-          color={colors.primary["400"]}
-        />
-        <H1>COSAGRADO</H1>
+        <Text>Texto</Text>
       </Conteiner.Box>
     </Conteiner>
   );

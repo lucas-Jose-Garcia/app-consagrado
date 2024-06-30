@@ -1,9 +1,13 @@
-import { Text, View } from "react-native";
+import { Conteiner } from "@/components/conteineres/conteiner";
+import { Text } from "react-native";
 
-export default function Home() {
+export default function Consecration() {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text>Consagração</Text>
-    </View>
+    <Conteiner>
+      <Conteiner.Header icone="crown-outline" title="Consagração" />
+      <Conteiner.Box>
+        <Text>Texto</Text>
+      </Conteiner.Box>
+    </Conteiner>
   );
 }

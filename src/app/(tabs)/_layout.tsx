@@ -1,13 +1,9 @@
 import { Tabs } from "expo-router";
-import {
-  MaterialIcons,
-  Ionicons,
-  Feather,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Cheer from "@/assets/cheer.svg";
 import Rosary from "@/assets/rosary.svg";
 import { colors } from "@/styles/colors";
+import { fontFamily } from "@/styles/fontFamily";
 
 export default function TabLayout() {
   return (
@@ -20,12 +16,26 @@ export default function TabLayout() {
           minHeight: 74,
         },
         tabBarActiveTintColor: colors.primary["400"],
+        headerStyle: {
+          backgroundColor: colors.primary["400"],
+        },
+        headerTintColor: "#e4e4e4",
+        headerTitleContainerStyle: {},
+        headerTitleStyle: { fontFamily: fontFamily.heading },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: "Home",
+          headerLeft: () => (
+            <MaterialCommunityIcons
+              className="ml-4"
+              size={28}
+              name="church"
+              color={"#e4e4e4"}
+            />
+          ),
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons size={28} name="church" color={color} />
           ),

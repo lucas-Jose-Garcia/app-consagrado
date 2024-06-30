@@ -24,7 +24,7 @@ export default function Layout() {
   if (!fontsLoaded) {
     return null;
   }
-
+  // style={{ paddingTop: insets.top }}
   return (
     <View className="flex-1 bg-gray-100" style={{ paddingTop: insets.top }}>
       <Slot />
