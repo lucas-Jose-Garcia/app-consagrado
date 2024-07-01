@@ -9,6 +9,7 @@ import {
   Poppins_500Medium,
   Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
+import { Vollkorn_400Regular_Italic } from "@expo-google-fonts/vollkorn";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 
@@ -19,6 +20,7 @@ export default function Layout() {
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold,
+    Vollkorn_400Regular_Italic,
   });
 
   if (!fontsLoaded) {

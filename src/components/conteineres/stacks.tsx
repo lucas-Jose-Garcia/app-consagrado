@@ -6,12 +6,20 @@ interface StackProps extends ViewProps {
   children: ReactNode;
 }
 
-function YStack({ className, children }: StackProps) {
-  return <View className={cn("flex-col", className)}>{children}</View>;
+function YStack({ className, children, ...rest }: StackProps) {
+  return (
+    <View className={cn("flex-col", className)} {...rest}>
+      {children}
+    </View>
+  );
 }
 
-function XStack({ className, children }: StackProps) {
-  return <View className={cn("flex-row", className)}>{children}</View>;
+function XStack({ className, children, ...rest }: StackProps) {
+  return (
+    <View className={cn("flex-row", className)} {...rest}>
+      {children}
+    </View>
+  );
 }
 
 export { YStack, XStack };

@@ -52,7 +52,7 @@ export function ConteinerHeader({
         <H1>{title}</H1>
       </XStack>
       {subtitle && (
-        <XStack className="-mt-2 justify-center">
+        <XStack className="-mt-3 justify-center">
           <Paragraph text={subtitle} />
         </XStack>
       )}
@@ -62,7 +62,7 @@ export function ConteinerHeader({
 
 function ConteinerBox({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("items-center mx-4", className)} {...rest}>
+    <View className={cn("flex-1 items-center mx-4 mt-3", className)} {...rest}>
       {children}
     </View>
   );

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 import { Text, TextProps } from "react-native";
 
-interface H1Props extends TextProps {
+interface HeadingsProps extends TextProps {
   children: ReactNode;
 }
 
@@ -11,9 +11,17 @@ const variantes = {
   normal: "text-gray-900",
 };
 
-export function H1({ className, children }: H1Props) {
+export function H1({ className, children }: HeadingsProps) {
   return (
     <Text className={cn("font-heading text-2xl text-gray-900", className)}>
+      {children}
+    </Text>
+  );
+}
+
+export function H2({ className, children }: HeadingsProps) {
+  return (
+    <Text className={cn("font-subtible text-xl text-gray-900", className)}>
       {children}
     </Text>
   );
