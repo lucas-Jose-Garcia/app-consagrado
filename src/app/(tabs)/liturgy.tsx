@@ -1,12 +1,15 @@
 import { Conteiner } from "@/components/conteineres/conteiner";
-import { Text } from "react-native";
+import { useLiturgy } from "@/hooks/liturgy";
+import { Button, Text } from "react-native";
 
 export default function Liturgy() {
+  const { getLiturgy } = useLiturgy();
+
   return (
     <Conteiner>
       <Conteiner.Header icone="book-outline" title="Liturgia" />
       <Conteiner.Box>
-        <Text>Texto</Text>
+        <Button title="Testar" onPress={getLiturgy} />
       </Conteiner.Box>
     </Conteiner>
   );
