@@ -12,16 +12,13 @@ export default function TabLayout() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          borderTopWidth: 0,
+          backgroundColor: colors.gray["900"],
+          borderTopWidth: 1,
+          borderColor: colors.gray["950"],
           minHeight: 74,
         },
         tabBarActiveTintColor: colors.primary["400"],
-        headerStyle: {
-          backgroundColor: colors.primary["400"],
-        },
-        headerTintColor: "#e4e4e4",
-        headerTitleContainerStyle: {},
-        headerTitleStyle: { fontFamily: fontFamily.heading },
+        tabBarInactiveTintColor: colors.gray["300"],
       }}
     >
       <Tabs.Screen

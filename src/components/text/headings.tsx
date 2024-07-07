@@ -13,7 +13,7 @@ const variantes = {
 
 export function H1({ className, children }: HeadingsProps) {
   return (
-    <Text className={cn("font-heading text-2xl text-gray-900", className)}>
+    <Text className={cn("font-heading text-2xl text-gray-100", className)}>
       {children}
     </Text>
   );
@@ -21,7 +21,7 @@ export function H1({ className, children }: HeadingsProps) {
 
 export function H2({ className, children }: HeadingsProps) {
   return (
-    <Text className={cn("font-subtible text-xl text-gray-900", className)}>
+    <Text className={cn("font-subtible text-xl text-gray-100", className)}>
       {children}
     </Text>
   );

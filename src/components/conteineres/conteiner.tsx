@@ -22,7 +22,7 @@ interface ConteinerHeaderProps extends ViewProps {
 
 function Conteiner({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("flex-1 bg-gray-100", className)} {...rest}>
+    <View className={cn("flex-1 bg-gray-950", className)} {...rest}>
       {children}
     </View>
   );

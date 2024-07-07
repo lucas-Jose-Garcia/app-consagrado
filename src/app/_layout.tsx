@@ -28,9 +28,9 @@ export default function Layout() {
   }
   // style={{ paddingTop: insets.top }}
   return (
-    <View className="flex-1 bg-gray-100" style={{ paddingTop: insets.top }}>
+    <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
       <Slot />
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
     </View>
   );
 }
