@@ -38,7 +38,7 @@ export function ConteinerHeader({
 }: ConteinerHeaderProps) {
   return (
     <YStack className={className} {...rest}>
-      <XStack className="gap-2 justify-center items-center px-4 py-2">
+      <XStack className="mb-3 gap-2 justify-center items-center px-4 py-2">
         {icone && (
           <MaterialCommunityIcons
             name={icone}
@@ -62,7 +62,7 @@ export function ConteinerHeader({
 
 function ConteinerBox({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("flex-1 items-center mx-4 mt-3", className)} {...rest}>
+    <View className={cn("flex-1 items-center mx-4", className)} {...rest}>
       {children}
     </View>
   );

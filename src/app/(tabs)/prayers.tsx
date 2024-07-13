@@ -14,10 +14,10 @@ export default function Prayers() {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <PrayerCard
+              id={item.id}
               title={item.title}
               preview={item.preview}
               uri={item.uri}
-              onPress={() => console.log(item.uri)}
             />
           )}
           className="w-full mb-3"

@@ -5,7 +5,26 @@ interface PrayersProps {
   preview: string;
 }
 
-export const DataPrayers = [
+export interface DataPrayersProps {
+  id: string;
+  title: string;
+  image: string;
+  type: string;
+  visible: boolean;
+  content: {
+    "pt-br": ContentProps;
+    la?: ContentProps;
+  };
+}
+
+export interface ContentProps {
+  media?: {
+    youtubeId: string;
+  };
+  text: string[];
+}
+
+export const DataPrayers: DataPrayersProps[] = [
   {
     id: "7852dd28-ec29-47cb-9846-aabb3e4b2e6b",
     title: "Ave Maris Stella",
@@ -1190,3 +1209,7 @@ export const ListPrayers: PrayersProps[] = DataPrayers.filter(
   };
   return prayer;
 });
+
+export const getPrayer = (id: string) => {
+  return DataPrayers.filter((x) => x.id === id)[0];
+};

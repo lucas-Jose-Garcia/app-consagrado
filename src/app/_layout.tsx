@@ -1,6 +1,6 @@
 import "@/styles/global.css";
 
-import { Slot } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import { View } from "react-native";
 
 import {
@@ -26,10 +26,13 @@ export default function Layout() {
   if (!fontsLoaded) {
     return null;
   }
-  // style={{ paddingTop: insets.top }}
+
   return (
     <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
-      <Slot />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="prayer" />
+      </Stack>
       <StatusBar style="light" />
     </View>
   );
