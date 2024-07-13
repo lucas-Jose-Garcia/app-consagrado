@@ -57,25 +57,29 @@ export default function Prayer() {
         />
       )}
 
-      <NavigationContainer independent>
-        <Tab.Navigator
-          screenOptions={{
-            tabBarIndicatorContainerStyle: {
-              backgroundColor: colors.gray["900"],
-            },
-            tabBarActiveTintColor: colors.primary["400"],
-            tabBarInactiveTintColor: colors.gray["200"],
-            tabBarIndicatorStyle: {
-              backgroundColor: colors.primary["400"],
-            },
-          }}
-        >
-          <Tab.Screen name="Português" component={PrayerTextPtBr} />
-          {player && player.content.la && (
-            <Tab.Screen name="Latim" component={PrayerTextLa} />
-          )}
-        </Tab.Navigator>
-      </NavigationContainer>
+      {player && player.content.la ? (
+        <NavigationContainer independent>
+          <Tab.Navigator
+            screenOptions={{
+              tabBarIndicatorContainerStyle: {
+                backgroundColor: colors.gray["900"],
+              },
+              tabBarActiveTintColor: colors.primary["400"],
+              tabBarInactiveTintColor: colors.gray["200"],
+              tabBarIndicatorStyle: {
+                backgroundColor: colors.primary["400"],
+              },
+            }}
+          >
+            <Tab.Screen name="Português" component={PrayerTextPtBr} />
+            {player && player.content.la && (
+              <Tab.Screen name="Latim" component={PrayerTextLa} />
+            )}
+          </Tab.Navigator>
+        </NavigationContainer>
+      ) : (
+        <PrayerTextPtBr />
+      )}
     </Conteiner>
   );
 }

@@ -1196,6 +1196,42 @@ export const DataPrayers: DataPrayersProps[] = [
       },
     },
   },
+  {
+    id: "bc995157-0185-483b-9df5-aaae2dfaf74b",
+    title: "Agradecimento",
+    image: "",
+    type: "simple",
+    visible: false,
+    content: {
+      "pt-br": {
+        text: [
+          "Infinitas graças vos damos, ó Soberana Rainha, pelos benefícios que todos os dias recebemos de vossas mãos maternais.",
+          "Dignai-vos, agora e para sempre tomar-nos debaixo do vosso poderoso amparo e para mais vos agradecer, vos saudamos com uma Salve Rainha.",
+        ],
+      },
+    },
+  },
+  {
+    id: "af5c6cda-b271-4105-933c-cd5a71d196ae",
+    title: "Salve Rainha",
+    image:
+      "https://r2.padrepauloricardo.org/uploads/episodio/share_image/3239/1559-memoria-de-nossa-senhora-rainha-frame.jpg",
+    type: "simple",
+    visible: true,
+    content: {
+      "pt-br": {
+        text: [
+          "Salve Rainha, Mãe de misericórdia, vida, doçura, esperança nossa, salve!",
+          "A vós bradamos os degredados filhos de Eva, a vós suspiramos, gemendo e chorando neste vale de lágrimas.",
+          "Eia, pois, Advogada nossa, esses vossos olhos misericordiosos a nós volvei, e depois deste desterro, mostrai-nos Jesus, bendito fruto do vosso ventre.",
+          "Ó clemente, ó piedosa, ó doce e sempre Virgem Maria.",
+          "Rogai por nós Santa Mãe de Deus.",
+          "Para que sejamos dignos das promessas de Cristo.",
+          "Amém.",
+        ],
+      },
+    },
+  },
 ];
 
 export const ListPrayers: PrayersProps[] = DataPrayers.filter(
