@@ -3,33 +3,36 @@ import { YStack } from "../conteineres/stacks";
 import { Paragraph } from "../text/paragraph";
 import { cn } from "@/lib/utils";
 
-const sourse = {
-  uri: "https://images.a12.com/source/files/c/289314/Imagem_de_Nossa_Senhora_Aparecida_Novena_da_Tarde_2022_-_6_dia-549163_1280-853-0-0.jpg",
-};
-
 interface ImageCardProps extends ViewProps {
+  uri?: string;
   legend?: string;
   origin?: string;
+  full?: boolean;
 }
 
 export function ImageCard({
+  uri,
   legend,
   origin,
   className,
+  full = false,
   ...rest
 }: ImageCardProps) {
   return (
     <YStack
       className={cn(
-        "h-2/5 w-full rounded-lg overflow-hidden shadow-xl shadow-black",
+        full ? "h-full" : "h-2/5",
+        "w-full rounded-lg overflow-hidden shadow-xl shadow-black",
         className
       )}
       {...rest}
     >
-      <ImageBackground className="flex-1" source={sourse} resizeMode="cover">
+      <ImageBackground className="flex-1" source={{ uri }} resizeMode="cover">
         <YStack
           className="flex-1"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.55)" }}
+          style={{
+            backgroundColor: legend ? "rgba(0, 0, 0, 0.55)" : "transparent",
+          }}
         >
           <YStack className="flex-1 m-4">
             {legend && (

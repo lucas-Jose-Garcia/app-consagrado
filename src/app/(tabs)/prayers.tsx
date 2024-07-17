@@ -18,6 +18,7 @@ export default function Prayers() {
               title={item.title}
               preview={item.preview}
               uri={item.uri}
+              type="simple"
             />
           )}
           className="w-full mb-3"

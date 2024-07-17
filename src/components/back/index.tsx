@@ -3,10 +3,23 @@ import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { YStack } from "../conteineres/stacks";
+import { ExpoRouter } from "expo-router/types/expo-router";
 
-export function Back() {
+interface BackProps {
+  replace?: ExpoRouter.Href;
+}
+
+export function Back({ replace }: BackProps) {
+  function onPress() {
+    if (replace) {
+      router.replace(replace);
+    } else {
+      router.back();
+    }
+  }
+
   return (
-    <TouchableOpacity onPress={() => router.back()}>
+    <TouchableOpacity onPress={onPress}>
       <YStack
         className="w-10 h-10 rounded-3xl justify-center items-center m-4"
         style={{ backgroundColor: "rgba(3, 7, 18, 0.4)" }}

@@ -1,6 +1,13 @@
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
-import { Text, TextProps } from "react-native";
+import { ReactNode, useEffect, useRef } from "react";
+import {
+  Animated,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextProps,
+  View,
+} from "react-native";
 
 interface HeadingsProps extends TextProps {
   children: ReactNode;

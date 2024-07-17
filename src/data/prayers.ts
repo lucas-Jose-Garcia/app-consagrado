@@ -1,9 +1,4 @@
-interface PrayersProps {
-  id: string;
-  uri: string;
-  title: string;
-  preview: string;
-}
+import { PrayersProps } from "./global";
 
 export interface DataPrayersProps {
   id: string;
@@ -1020,7 +1015,7 @@ export const DataPrayers: DataPrayersProps[] = [
           youtubeId: "",
         },
         text: [
-          "Avé Maria, cheia de graça,",
+          "Ave Maria, cheia de graça,",
           "o Senhor é convosco,",
           "bendita sois vós entre as mulheres",
           "e bendito é o fruto do vosso ventre, Jesus.",
@@ -1144,7 +1139,8 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "c0c364de-d922-4580-8981-9964df57cbfe",
     title: "Glória",
-    image: "",
+    image:
+      "https://www.cnbb.org.br/wp-content/uploads/2020/03/trindadeesanta-768x480-2.jpg",
     type: "simple",
     visible: false,
     content: {
@@ -1163,7 +1159,8 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "72ee9cd3-fb7e-49fe-9cd9-631b740cecc3",
     title: "Sinal da Cruz",
-    image: "",
+    image:
+      "https://cooperadoresdaverdade.com/wp-content/uploads/2020/03/A-Origem-e-o-Significado-do-Sinal-da-Cruz.jpg",
     type: "simple",
     visible: false,
     content: {
@@ -1184,7 +1181,8 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "af16bd5a-72ab-42d6-84e8-f4b5ba8384e4",
     title: "Oferecimento",
-    image: "",
+    image:
+      "https://r2.padrepauloricardo.org/uploads/episodio/share_image/3239/1559-memoria-de-nossa-senhora-rainha-frame.jpg",
     type: "simple",
     visible: false,
     content: {
@@ -1199,7 +1197,8 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "bc995157-0185-483b-9df5-aaae2dfaf74b",
     title: "Agradecimento",
-    image: "",
+    image:
+      "https://r2.padrepauloricardo.org/uploads/episodio/share_image/3239/1559-memoria-de-nossa-senhora-rainha-frame.jpg",
     type: "simple",
     visible: false,
     content: {

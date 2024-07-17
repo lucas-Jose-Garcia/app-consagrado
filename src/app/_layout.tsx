@@ -32,6 +32,7 @@ export default function Layout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="prayer" />
+        <Stack.Screen name="rosary" />
       </Stack>
       <StatusBar style="light" />
     </View>
