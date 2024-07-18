@@ -8,6 +8,7 @@ import { cn, setVariant } from "@/lib/utils";
 import { ReactNode } from "react";
 
 type colorVariantsProps = "green" | "transparent";
+type sizeVariantProps = "full" | "content";
 
 interface SimpleButtonProps {
   text: string;
@@ -25,6 +26,7 @@ type ItemButtonProps = SimpleButtonProps | ChildrenButtonProps;
 type ButtonProps = ItemButtonProps &
   TouchableOpacityProps & {
     color?: colorVariantsProps;
+    size?: sizeVariantProps;
     className?: string;
   };
 
@@ -37,11 +39,17 @@ const colorVariant: { [key in colorVariantsProps]: string } = {
   green: "bg-green-900",
 };
 
+const sizeVariant: { [key in sizeVariantProps]: string } = {
+  full: "min-w-full",
+  content: "",
+};
+
 function Button({
   children,
   icon,
   text,
   color,
+  size,
   className,
   ...rest
 }: ButtonProps) {
@@ -49,9 +57,10 @@ function Button({
     <TouchableOpacity activeOpacity={0.7} {...rest}>
       <XStack
         className={cn(
-          "min-w-full justify-center items-center gap-2 p-3 rounded-md shadow-md",
+          "justify-center items-start gap-2 p-3 rounded-md shadow-md",
           className,
-          setVariant(colorVariant, color)
+          setVariant(colorVariant, color),
+          setVariant(sizeVariant, size)
         )}
       >
         {children ? (

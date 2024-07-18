@@ -12,6 +12,7 @@ import {
 import { Vollkorn_400Regular_Italic } from "@expo-google-fonts/vollkorn";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function Layout() {
   const insets = useSafeAreaInsets();
@@ -28,13 +29,15 @@ export default function Layout() {
   }
 
   return (
-    <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="prayer" />
-        <Stack.Screen name="rosary" />
-      </Stack>
-      <StatusBar style="light" />
-    </View>
+    <GestureHandlerRootView>
+      <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+          <Stack.Screen name="prayer" />
+          <Stack.Screen name="rosary" />
+        </Stack>
+        <StatusBar style="light" />
+      </View>
+    </GestureHandlerRootView>
   );
 }

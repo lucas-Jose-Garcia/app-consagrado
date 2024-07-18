@@ -21,6 +21,8 @@ import { useCallback, useRef, useState } from "react";
 import { Alert, TouchableOpacity, View } from "react-native";
 import { captureRef } from "react-native-view-shot";
 import * as Sharing from "expo-sharing";
+import { BottomSheet, BottomSheetNative } from "@/components/bottomSheet";
+import { BottonSheetPrayer } from "@/components/bottomSheet/prayer";
 
 export default function Prayer() {
   const { id } = useLocalSearchParams<{
@@ -36,6 +38,7 @@ export default function Prayer() {
   const [info, setInfo] = useState<InfoGroupProps | null>();
 
   const finishedRef = useRef<View>(null);
+  const BottomSheetRef = useRef<BottomSheetNative>(null);
 
   const formattedDate = new Date().toLocaleDateString("pt-BR", {
     day: "numeric",
@@ -44,6 +47,10 @@ export default function Prayer() {
   });
 
   const dayWeek = getDayofWeek(new Date());
+
+  function openBottonSheet() {
+    BottomSheetRef.current?.expand();
+  }
 
   function hendleMove(move: number) {
     if (!current || !rosary) return;
@@ -133,7 +140,7 @@ export default function Prayer() {
                 <ExpandableCard
                   text={current.content["pt-br"].text.join("\n")}
                   numberOfLines={3}
-                  onPress={() => {}}
+                  onPress={openBottonSheet}
                 />
               </YStack>
 
@@ -154,10 +161,6 @@ export default function Prayer() {
                 </XStack>
                 <ActionButton icon="caretright" onPress={() => hendleMove(1)} />
               </XStack>
-
-              <Button>
-                <Button.Text text="A seguir" className="uppercase p-3" />
-              </Button>
             </>
           ) : (
             <>
@@ -189,6 +192,16 @@ export default function Prayer() {
             </>
           )}
         </Conteiner.Box>
+      )}
+      {current && (
+        <BottonSheetPrayer
+          ref={BottomSheetRef}
+          title={current.description}
+          text={current.content["pt-br"].text.join("\n")}
+          stage={`${String(current.prayed)}/${String(current.occurrences)}`}
+          previousOnPress={() => hendleMove(-1)}
+          nextOnPress={() => hendleMove(1)}
+        />
       )}
     </Conteiner>
   );

@@ -10,5 +10,5 @@ export function setVariant(variants: { [key: string]: string }, key?: string) {
     return variants[key];
   }
 
-  return variants[0];
+  return variants[Object.keys(variants)[0]];
 }
