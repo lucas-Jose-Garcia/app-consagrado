@@ -3,7 +3,6 @@ import { XStack } from "../conteineres/stacks";
 import { AntDesign } from "@expo/vector-icons";
 import { Paragraph } from "../text/paragraph";
 import { colors } from "@/styles/colors";
-import clsx from "clsx";
 import { cn, setVariant } from "@/lib/utils";
 import { ReactNode } from "react";
 
@@ -32,6 +31,7 @@ type ButtonProps = ItemButtonProps &
 
 interface IconProps {
   icon: keyof typeof AntDesign.glyphMap;
+  disabled?: boolean;
 }
 
 const colorVariant: { [key in colorVariantsProps]: string } = {
@@ -79,8 +79,12 @@ function Button({
 }
 
 Button.Text = Paragraph;
-Button.Icon = ({ icon }: IconProps) => (
-  <AntDesign name={icon} size={20} color={colors.gray[200]} />
+Button.Icon = ({ icon, disabled = false }: IconProps) => (
+  <AntDesign
+    name={icon}
+    size={20}
+    color={disabled ? colors.gray[500] : colors.gray[200]}
+  />
 );
 
 export { Button };

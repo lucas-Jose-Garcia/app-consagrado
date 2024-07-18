@@ -6,16 +6,21 @@ import { Button } from "../button";
 import { XStack, YStack } from "../conteineres/stacks";
 import { H2 } from "../text/headings";
 
+interface ButtonProps {
+  active: boolean;
+  onPress: () => void;
+}
+
 interface BottomSheetProps {
   title: string;
   text: string;
   stage: string;
-  nextOnPress: () => void;
-  previousOnPress: () => void;
+  next: ButtonProps;
+  previous: ButtonProps;
 }
 
 const BottonSheetPrayer = forwardRef(function BottonSheetPrayer(
-  { title, text, stage, previousOnPress, nextOnPress }: BottomSheetProps,
+  { title, text, stage, previous, next }: BottomSheetProps,
   ref: ForwardedRef<BottomSheetNative>
 ) {
   return (
@@ -24,14 +29,30 @@ const BottonSheetPrayer = forwardRef(function BottonSheetPrayer(
         <H2>{title}</H2>
         <Paragraph text={text} className="text-center " />
         <XStack className="w-full items-center justify-between pb-3">
-          <Button onPress={previousOnPress} size="content">
-            <Button.Icon icon="arrowleft" />
-            <Button.Text text="Anteior" className="uppercase" />
+          <Button
+            onPress={() => previous.onPress()}
+            size="content"
+            disabled={!previous.active}
+          >
+            <Button.Icon icon="arrowleft" disabled={!previous.active} />
+            <Button.Text
+              text="Anteior"
+              className="uppercase"
+              disabled={!previous.active}
+            />
           </Button>
           <Paragraph text={stage} />
-          <Button onPress={nextOnPress} size="content">
-            <Button.Text text="Próximo" className="uppercase" />
-            <Button.Icon icon="arrowright" />
+          <Button
+            onPress={() => next.onPress()}
+            size="content"
+            disabled={!next.active}
+          >
+            <Button.Text
+              text="Próximo"
+              className="uppercase"
+              disabled={!next.active}
+            />
+            <Button.Icon icon="arrowright" disabled={!next.active} />
           </Button>
         </XStack>
       </BottomSheetView>

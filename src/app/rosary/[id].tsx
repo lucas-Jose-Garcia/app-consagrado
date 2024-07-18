@@ -21,7 +21,7 @@ import { useCallback, useRef, useState } from "react";
 import { Alert, TouchableOpacity, View } from "react-native";
 import { captureRef } from "react-native-view-shot";
 import * as Sharing from "expo-sharing";
-import { BottomSheet, BottomSheetNative } from "@/components/bottomSheet";
+import { BottomSheetNative } from "@/components/bottomSheet";
 import { BottonSheetPrayer } from "@/components/bottomSheet/prayer";
 
 export default function Prayer() {
@@ -199,8 +199,14 @@ export default function Prayer() {
           title={current.description}
           text={current.content["pt-br"].text.join("\n")}
           stage={`${String(current.prayed)}/${String(current.occurrences)}`}
-          previousOnPress={() => hendleMove(-1)}
-          nextOnPress={() => hendleMove(1)}
+          previous={{
+            active: firstId !== current.id,
+            onPress: () => hendleMove(-1),
+          }}
+          next={{
+            active: lastId !== current.id,
+            onPress: () => hendleMove(1),
+          }}
         />
       )}
     </Conteiner>
