@@ -11,7 +11,7 @@ interface PrayerCardProps {
   uri: string;
   title: string;
   preview: string;
-  type: "simple" | "rosary";
+  type: "simple" | "rosary" | "consecration";
 }
 
 export function PrayerCard({ id, uri, title, preview, type }: PrayerCardProps) {

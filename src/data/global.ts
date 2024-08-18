@@ -1,3 +1,6 @@
+import { DataPrayers } from "./prayers";
+import { DataRosary } from "./rosary";
+
 export interface PrayersProps {
   id: string;
   uri: string;

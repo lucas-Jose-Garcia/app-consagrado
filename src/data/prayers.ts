@@ -12,6 +12,8 @@ export interface DataPrayersProps {
   };
 }
 
+export type InfoPrayersProps = Omit<DataPrayersProps, "content">;
+
 export interface ContentProps {
   media?: {
     youtubeId: string;
@@ -218,8 +220,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "80c2d081-6266-4fa1-85ba-24edcb824f94",
     title: "Ladainha do Espírito Santo",
-    image:
-      "https://caminhadadeemaus.com.br/wp-content/uploads/2021/05/ladainha-ao-espirito-santo-frame.jpg",
+    image: "https://caminhadadeemaus.com.br/wp-content/uploads/2021/05/ladainha-ao-espirito-santo-frame.jpg",
     type: "simple",
     visible: true,
     content: {
@@ -605,8 +606,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "2632457c-9cf5-4f05-9e50-eecd9ffb938f",
     title: "Oração de Santo Agostinho",
-    image:
-      "https://img.cancaonova.com/cnimages/canais/uploads/sites/2/2022/08/Santo-Agostinho-artigoCNBB.jpg",
+    image: "https://img.cancaonova.com/cnimages/canais/uploads/sites/2/2022/08/Santo-Agostinho-artigoCNBB.jpg",
     type: "simple",
     visible: true,
     content: {
@@ -639,8 +639,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "3c945e63-6698-4a82-a819-509d8606a5ae",
     title: "Ladainha do Santíssimo Nome de Jesus",
-    image:
-      "https://meldedeus.com/wp-content/uploads/2020/01/42246FD6-3CC9-4DFB-8726-CE3382385AFB.jpeg",
+    image: "https://meldedeus.com/wp-content/uploads/2020/01/42246FD6-3CC9-4DFB-8726-CE3382385AFB.jpeg",
     type: "simple",
     visible: true,
     content: {
@@ -853,8 +852,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "3b8dcd22-086f-49a7-b170-bd4291819ecb",
     title: "Ladainha do Sacratíssimo Coração de Jesus",
-    image:
-      "https://osaopaulo.org.br/wp-content/uploads/2023/06/novena-ao-sagrado-coracao-frame.jpg",
+    image: "https://osaopaulo.org.br/wp-content/uploads/2023/06/novena-ao-sagrado-coracao-frame.jpg",
     type: "simple",
     visible: true,
     content: {
@@ -1005,8 +1003,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "3b166847-28de-4dd8-9ad6-8d86b319ccda",
     title: "Ave Maria",
-    image:
-      "https://wp.pt.aleteia.org/wp-content/uploads/sites/5/2017/04/ave-maria.png",
+    image: "https://wp.pt.aleteia.org/wp-content/uploads/sites/5/2017/04/ave-maria.png",
     type: "simple",
     visible: true,
     content: {
@@ -1043,8 +1040,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "beaf4646-0571-437d-a049-80ccebc7d7cc",
     title: "Credo (Creio)",
-    image:
-      "https://bibliotecacatolica.com.br/wp-content/uploads/2023/06/Holy-Trinity.webp",
+    image: "https://bibliotecacatolica.com.br/wp-content/uploads/2023/06/Holy-Trinity.webp",
     type: "simple",
     visible: true,
     content: {
@@ -1097,8 +1093,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "640d8601-b6d9-426a-8721-9fe2899254be",
     title: "Pai Nosso",
-    image:
-      "https://cooperadoresdaverdade.com/wp-content/uploads/2020/07/Pai-Nosso.jpg",
+    image: "https://cooperadoresdaverdade.com/wp-content/uploads/2020/07/Pai-Nosso.jpg",
     type: "simple",
     visible: true,
     content: {
@@ -1139,8 +1134,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "c0c364de-d922-4580-8981-9964df57cbfe",
     title: "Glória",
-    image:
-      "https://www.cnbb.org.br/wp-content/uploads/2020/03/trindadeesanta-768x480-2.jpg",
+    image: "https://www.cnbb.org.br/wp-content/uploads/2020/03/trindadeesanta-768x480-2.jpg",
     type: "simple",
     visible: false,
     content: {
@@ -1159,8 +1153,7 @@ export const DataPrayers: DataPrayersProps[] = [
   {
     id: "72ee9cd3-fb7e-49fe-9cd9-631b740cecc3",
     title: "Sinal da Cruz",
-    image:
-      "https://cooperadoresdaverdade.com/wp-content/uploads/2020/03/A-Origem-e-o-Significado-do-Sinal-da-Cruz.jpg",
+    image: "https://cooperadoresdaverdade.com/wp-content/uploads/2020/03/A-Origem-e-o-Significado-do-Sinal-da-Cruz.jpg",
     type: "simple",
     visible: false,
     content: {
@@ -1233,9 +1226,7 @@ export const DataPrayers: DataPrayersProps[] = [
   },
 ];
 
-export const ListPrayers: PrayersProps[] = DataPrayers.filter(
-  (x) => x.visible
-).map((x) => {
+export const ListPrayers: PrayersProps[] = DataPrayers.filter((x) => x.visible).map((x) => {
   const prayer: PrayersProps = {
     id: x.id,
     uri: x.image,
@@ -1247,4 +1238,20 @@ export const ListPrayers: PrayersProps[] = DataPrayers.filter(
 
 export const getPrayer = (id: string) => {
   return DataPrayers.filter((x) => x.id === id)[0];
+};
+
+export const getPrayers = (ids: string[]) => {
+  const data = DataPrayers.filter((x) => ids.includes(x.id));
+  const result: PrayersProps[] = [];
+
+  data.forEach((x) => {
+    result.push({
+      id: x.id,
+      uri: x.image,
+      title: x.title,
+      preview: x.content["pt-br"].text.slice(0, 3).join(" "),
+    });
+  });
+
+  return result;
 };

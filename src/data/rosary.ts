@@ -17,12 +17,14 @@ interface MysteriesProps {
   complement: string[];
 }
 
+type DayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
 export interface GroupProps {
   id: string;
   title: string;
   description: string;
   image: string;
-  days: (0 | 1 | 2 | 3 | 4 | 5 | 6)[];
+  days: DayOfWeek[];
   mysteries: MysteriesProps[] | string[];
 }
 
@@ -98,8 +100,7 @@ export const DataRosary: DataRosaryProps = {
         title: "Rosário",
         description:
           "Contemplamos todos os mistérios passando pelo nascimento, vida, morte e ressureição de Nosso Senhor Jesus Cristo.",
-        image:
-          "https://images.a12.com/source/files/c/315546/Maos_rezando_o_terco-790718_1481-989-0-0.jpg",
+        image: "https://images.a12.com/source/files/c/315546/Maos_rezando_o_terco-790718_1481-989-0-0.jpg",
         days: [],
         mysteries: [
           "7681f562-93bc-4631-a08f-85e729602c26",
@@ -129,8 +130,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 2,
             title: "Visitação de Nossa Senhora a sua prima Isabel",
-            image:
-              "https://gaudiumpress.org/wp-content/uploads/2021/05/visita-de-nossa-senhora-a-santa-isabel.jpg",
+            image: "https://gaudiumpress.org/wp-content/uploads/2021/05/visita-de-nossa-senhora-a-santa-isabel.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra da visitação de vossa santa Mãe à sua prima santa Isabel e da santificação de São João Batista; e vos pedimos, por esse mistério e pela intercessão de vossa Mãe Santíssima, a caridade para com o nosso próximo. Assim seja.",
             complement: [""],
@@ -138,8 +138,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 3,
             title: "Nascimento de Jesus",
-            image:
-              "https://www.bbc.co.uk/worldservice/assets/images/2010/12/20/101220132849_murilloadoracao.jpg",
+            image: "https://www.bbc.co.uk/worldservice/assets/images/2010/12/20/101220132849_murilloadoracao.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra ao vosso nascimento no estábulo de Belém; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, o desapego dos bens terrenos e ao amor a pobreza. Assim seja.",
             complement: [""],
@@ -147,8 +146,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 4,
             title: "Apresentação do Menino Jesus no Templo",
-            image:
-              "https://r2.padrepauloricardo.org/ows2olsi32ufoq956bjoe7pmi5gt",
+            image: "https://r2.padrepauloricardo.org/ows2olsi32ufoq956bjoe7pmi5gt",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra a vossa apresentação ao templo, e da purificação de Maria; e vos pedimos, por este mistério e por sua intercessão, uma grande pureza de corpo de alma. Assim seja.",
             complement: [""],
@@ -156,8 +154,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 5,
             title: "Perda e encontro do Menino Jesus no Templo",
-            image:
-              "https://i.pinimg.com/236x/d4/9f/7a/d49f7aee6ceb9e9f6da98e17d7799355.jpg",
+            image: "https://i.pinimg.com/236x/d4/9f/7a/d49f7aee6ceb9e9f6da98e17d7799355.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra ao vosso reencontro por Maria; e vos pedimos, por este mistério; e por sua intercessão, a verdadeira sabedoria. Assim seja.",
             complement: [""],
@@ -176,8 +173,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 1,
             title: "Batismo de Jesus no rio Jordão",
-            image:
-              "https://comunidadeoasis.org.br/wp-content/uploads/2021/01/Esplendor-da-Verdade263.png",
+            image: "https://comunidadeoasis.org.br/wp-content/uploads/2021/01/Esplendor-da-Verdade263.png",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra de vosso batismo no rio Jordão; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, o comprometimento com vosso caminho. Assim seja.",
             complement: [""],
@@ -185,8 +181,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 2,
             title: "Auto-revelação de Jesus nas Bodas de Caná",
-            image:
-              "https://i.pinimg.com/236x/7a/d2/e2/7ad2e2a211f7344e695ea2d1de60bc5e.jpg",
+            image: "https://i.pinimg.com/236x/7a/d2/e2/7ad2e2a211f7344e695ea2d1de60bc5e.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra de vossa auto-revelação nas Bodas de Caná; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, a abertura de nosso coração à fé. Assim seja.",
             complement: ["FALAR DOS DICIPULOS QUE SE ABREM À FÉ"],
@@ -280,15 +275,13 @@ export const DataRosary: DataRosaryProps = {
         title: "Mistérios Gloriosos",
         description:
           "No Mistérios Gloriosos contemplamos a Ressureição de Jesus. Estes mistérios convidam o fiel a ultrapassar as trevas da Paixão  para fixar o olhar na glória de Cristo com a Ressurreição e a Ascensão (São João Paulo II, 2002).",
-        image:
-          "https://comunidadeoasis.org.br/wp-content/uploads/2021/04/Esplendor-da-Verdade370.png",
+        image: "https://comunidadeoasis.org.br/wp-content/uploads/2021/04/Esplendor-da-Verdade370.png",
         days: [0, 3],
         mysteries: [
           {
             order: 1,
             title: "Ressurreição de Jesus",
-            image:
-              "https://comunidadeoasis.org.br/wp-content/uploads/2021/04/Esplendor-da-Verdade370.png",
+            image: "https://comunidadeoasis.org.br/wp-content/uploads/2021/04/Esplendor-da-Verdade370.png",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra a vossa ressurreição gloriosa; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, o amor a Deus e o fervor ao vosso serviço. Assim seja.",
             complement: [""],
@@ -296,8 +289,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 2,
             title: "Ascensão de Jesus ao Céu",
-            image:
-              "https://cruzartesacra.com.br/wp-content/uploads/2020/05/ascensao-de-nosso-senhor.jpg",
+            image: "https://cruzartesacra.com.br/wp-content/uploads/2020/05/ascensao-de-nosso-senhor.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra a vossa triunfante ascensão; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, um ardente desejo do céu, nossa cara pátria. Assim seja.",
             complement: [""],
@@ -305,8 +297,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 3,
             title: "Vinda do Espírito Santo sobre os Apóstolos",
-            image:
-              "https://cruzartesacra.com.br/wp-content/uploads/2017/06/826479.jpg",
+            image: "https://cruzartesacra.com.br/wp-content/uploads/2017/06/826479.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra do mistério de Pentecostes; e vos pedimos, por este mistério e pela intercessão de vossa Mãe Santíssima, a descida do Espírito Santo em nossas almas. Assim seja.",
             complement: [""],
@@ -314,8 +305,7 @@ export const DataRosary: DataRosaryProps = {
           {
             order: 4,
             title: "Assunção de Maria",
-            image:
-              "https://i.pinimg.com/originals/bb/e0/61/bbe061f076bb1a6b98e895cb4153adb7.jpg",
+            image: "https://i.pinimg.com/originals/bb/e0/61/bbe061f076bb1a6b98e895cb4153adb7.jpg",
             offering:
               "Nós vos oferecemos, Senhor Jesus, esta dezena, em honra da ressurreição e triunfal assunção de vossa Mãe ao céu; e vos pedimos, por este mistério e por sua intercessão, uma terna devoção a tão boa mãe. Assim seja.",
             complement: [""],
@@ -354,16 +344,14 @@ export const DataRosary: DataRosaryProps = {
 
 export const DataRosaryCards = DataRosary.contemplations.groups;
 
-export const ListRosary: PrayersProps[] = DataRosary.contemplations.groups.map(
-  (x) => {
-    return {
-      id: x.id,
-      title: x.title,
-      preview: getPreview(x.days),
-      uri: x.image,
-    };
-  }
-);
+export const ListRosary: PrayersProps[] = DataRosary.contemplations.groups.map((x) => {
+  return {
+    id: x.id,
+    title: x.title,
+    preview: getPreview(x.days),
+    uri: x.image,
+  };
+});
 
 function getPreview(days: (0 | 1 | 2 | 3 | 4 | 5 | 6)[]) {
   if (days.length === 0) {
@@ -389,9 +377,7 @@ export function getRosary(id: string): GroupMysteriesProps {
 
   if (typeof data.mysteries[0] === "string") {
     const updatedMysteries = (data.mysteries as string[]).flatMap(
-      (x) =>
-        DataRosary.contemplations.groups.filter((y) => x === y.id)[0]
-          .mysteries as MysteriesProps[]
+      (x) => DataRosary.contemplations.groups.filter((y) => x === y.id)[0].mysteries as MysteriesProps[]
     );
 
     data.mysteries = updatedMysteries;
@@ -506,4 +492,10 @@ export function getGroupInfo(id: string): InfoGroupProps {
   };
 
   return result;
+}
+
+export function currentRosary(): PrayersProps {
+  const day: DayOfWeek = new Date().getDay() as DayOfWeek;
+  const item = DataRosary.contemplations.groups.filter((x) => x.days.includes(day))[0];
+  return ListRosary.filter((x) => x.id === item.id)[0];
 }

@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const VIDEO_HEIGHT = 230;
 
-interface ConverProps {
+export interface ConverProps {
   image: string;
   title: string;
   youtubeId?: string;
@@ -21,10 +21,7 @@ export function Conver({ image, title, youtubeId }: ConverProps) {
 
   if (!youtubeId || youtubeId === "") {
     return (
-      <ImageBackground
-        source={{ uri: image }}
-        className="w-full h-64 justify-end"
-      >
+      <ImageBackground source={{ uri: image }} className="w-full h-64 justify-end">
         <LinearGradient
           colors={[
             "rgba(3, 7, 18, 0.2)",
@@ -56,11 +53,7 @@ export function Conver({ image, title, youtubeId }: ConverProps) {
         </H2>
       </XStack>
       <YStack className="h-[230px] justify-center">
-        <YoutubePlayer
-          videoId={youtubeId}
-          height={videoReady ? VIDEO_HEIGHT : 0}
-          onReady={() => setVideoReady(true)}
-        />
+        <YoutubePlayer videoId={youtubeId} height={videoReady ? VIDEO_HEIGHT : 0} onReady={() => setVideoReady(true)} />
         {!videoReady && <ActivityIndicator color={"#ff0000"} size={24} />}
       </YStack>
     </YStack>
