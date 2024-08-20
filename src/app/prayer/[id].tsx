@@ -17,6 +17,10 @@ import { DataConsecrationProps, getStageConsecration } from "@/data/consecration
 import { PrayerCard } from "@/components/card/prayerCard";
 import { PrayersProps } from "@/data/global";
 import { H3 } from "@/components/text/headings";
+import Cheer from "@/assets/cheer.svg";
+import { IndividualPrayer } from "@/components/individualPrayer";
+import { RosaryDetails } from "@/components/rosaryDetails";
+import { ConsecrationDetails } from "@/components/consecrationDetails";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -32,25 +36,13 @@ export default function Prayer() {
   const [cover, setCover] = useState<ConverProps | null>(null);
   const [youtubeId, setYoutubeId] = useState("");
 
+  const isIndividualPrayer = !rosary && !infoConsecration && player;
+  const isRosary = !infoConsecration && rosary && id;
+  const isConsecration = consecration && infoConsecration;
+
   function totleYoutube(id: string) {
     setYoutubeId((prevState) => (prevState === id ? "" : id));
   }
-
-  const PrayerTextPtBr = () => (
-    <PrayerText
-      content={player?.content["pt-br"]}
-      setYoutube={() => totleYoutube(player?.content["pt-br"].media?.youtubeId ?? "")}
-    />
-  );
-
-  const PrayerTextLa = () => (
-    <PrayerText
-      content={player?.content["la"]}
-      setYoutube={() => totleYoutube(player?.content["la"]?.media?.youtubeId ?? "")}
-    />
-  );
-
-  const thirdDay = currentRosary();
 
   useFocusEffect(
     useCallback(() => {
@@ -82,97 +74,11 @@ export default function Prayer() {
     <Conteiner>
       {cover && <Conver image={cover.image} title={cover.title} youtubeId={youtubeId} />}
 
-      {!rosary &&
-        !infoConsecration &&
-        (player && player.content.la ? (
-          <NavigationContainer independent>
-            <Tab.Navigator
-              screenOptions={{
-                tabBarIndicatorContainerStyle: {
-                  backgroundColor: colors.gray["900"],
-                },
-                tabBarActiveTintColor: colors.primary["400"],
-                tabBarInactiveTintColor: colors.gray["200"],
-                tabBarIndicatorStyle: {
-                  backgroundColor: colors.primary["400"],
-                },
-              }}
-            >
-              <Tab.Screen name="Português" component={PrayerTextPtBr} />
-              {player && player.content.la && <Tab.Screen name="Latim" component={PrayerTextLa} />}
-            </Tab.Navigator>
-          </NavigationContainer>
-        ) : (
-          <PrayerTextPtBr />
-        ))}
+      {isIndividualPrayer && <IndividualPrayer prayer={player} totleYoutube={totleYoutube} />}
 
-      {!infoConsecration && rosary && (
-        <Conteiner.Box>
-          {rosary.description && <Paragraph text={rosary.description} className="w-full" />}
+      {isRosary && <RosaryDetails rosary={rosary} id={id} />}
 
-          <YStack className="w-full">
-            <Paragraph text="Mistérios" className="justify-start font-bold mt-5" />
-          </YStack>
-          <ScrollView className="w-full mt-2" overScrollMode="never" showsHorizontalScrollIndicator={false}>
-            {rosary.mysteries.map((x) => (
-              <Paragraph
-                key={`${x.order}º Misterio - ${x.title}`}
-                text={`${x.order}º Misterio - ${x.title}`}
-                className="mt-1"
-              />
-            ))}
-          </ScrollView>
-          <Button
-            text="Iniciar"
-            icon="caretright"
-            onPress={() => router.push(`/rosary/${id}`)}
-            color="green"
-            className="mt-3 mb-10"
-          />
-        </Conteiner.Box>
-      )}
-
-      {consecration && infoConsecration && (
-        <Conteiner.Box>
-          <ScrollView showsVerticalScrollIndicator={false} className="w-full flex-1">
-            {infoConsecration && (
-              <>
-                <H3>Orações</H3>
-                {infoConsecration.map((item) => (
-                  <PrayerCard
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    preview={item.preview}
-                    uri={item.uri}
-                    type="simple"
-                  />
-                ))}
-              </>
-            )}
-            {consecration.rosary && (
-              <>
-                <H3 className="mt-4">Rosário</H3>
-                <Paragraph text="Resar um rosário ou ao menos um terço." />
-                <PrayerCard
-                  id={ListRosary[0].id}
-                  title={ListRosary[0].title}
-                  preview={ListRosary[0].preview}
-                  uri={ListRosary[0].uri}
-                  type="rosary"
-                />
-                <PrayerCard
-                  id={thirdDay.id}
-                  title={thirdDay.title}
-                  preview={thirdDay.preview}
-                  uri={thirdDay.uri}
-                  type="rosary"
-                />
-              </>
-            )}
-          </ScrollView>
-        </Conteiner.Box>
-      )}
+      {isConsecration && <ConsecrationDetails consecration={consecration} infoConsecration={infoConsecration} />}
     </Conteiner>
   );
 }

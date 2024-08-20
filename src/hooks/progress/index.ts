@@ -2,19 +2,14 @@ import { DataConsecration } from "@/data/consecration";
 import { useStorage } from "../storage";
 import { Tables } from "../storage/tables";
 
-interface ProgressProps {
+export interface ProgressProps {
   day: number;
-}
-
-interface DataProgressProps {
-  [key: string]: {
-    current: number;
-    limit: number;
-  };
+  lastRegister: string | null;
 }
 
 const initial: ProgressProps = {
   day: 0,
+  lastRegister: null,
 };
 
 export function useProgress() {
@@ -25,9 +20,13 @@ export function useProgress() {
     if (data === null) {
       const newValue = initial;
       newValue.day = 1;
+      newValue.lastRegister = new Date().toString();
       await consagracao.set(newValue);
     } else {
-      data.day = data.day + 1;
+      const newValue = data;
+      newValue.day = data.day + 1 > 33 ? 33 : data.day + 1;
+      newValue.lastRegister = new Date().toString();
+      await consagracao.set(newValue);
     }
   }
 
@@ -37,34 +36,21 @@ export function useProgress() {
       await consagracao.set(initial);
     } else {
       data.day = data.day > 0 ? data.day - 1 : 0;
+      await consagracao.set(data);
     }
   }
 
   async function get() {
     const data = await consagracao.get();
-
-    const progress: DataProgressProps = {};
-
-    DataConsecration.forEach((x) => {
-      progress[x.id] = {
-        current: 0,
-        limit: x.days,
-      };
-    });
-
-    if (data && data.day > 0) {
-      let currentLimit = 0;
-      Object.keys(progress).forEach((id) => {
-        currentLimit = currentLimit + progress[id].limit;
-        if (data.day >= currentLimit) {
-          progress[id].current = progress[id].limit;
-        } else {
-          const value = data.day - (currentLimit - progress[id].limit);
-          progress[id].current = value < 0 ? 0 : value;
-        }
-      });
-    }
+    return data ?? initial;
   }
 
-  return { increment, decrement };
+  async function testes() {
+    await consagracao.set({
+      day: 12,
+      lastRegister: null,
+    });
+  }
+
+  return { increment, decrement, get, testes };
 }

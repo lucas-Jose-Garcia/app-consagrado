@@ -116,3 +116,13 @@ export const DataConsecration: DataConsecrationProps[] = [
 export function getStageConsecration(id: string) {
   return DataConsecration.filter((x) => x.id === id)[0];
 }
+
+export function getCurrentPrayersIdForDay(currentDay: number) {
+  let accumulatedDays = 0;
+  const result = DataConsecration.find((x) => {
+    accumulatedDays += x.days;
+    return accumulatedDays >= currentDay;
+  });
+
+  return result ? result.id : "";
+}

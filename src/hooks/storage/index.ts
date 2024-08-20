@@ -7,8 +7,8 @@ export function useStorage<T>(key: Tables) {
       const data = await AsyncStorage.getItem(key);
       const result = data !== null ? JSON.parse(data) : null;
       return result;
-    } catch (e) {
-      // error reading value
+    } catch (error) {
+      console.log("useStorage:get", error);
       return null;
     }
   }
@@ -16,8 +16,8 @@ export function useStorage<T>(key: Tables) {
   async function set(value: T) {
     try {
       AsyncStorage.setItem(key, JSON.stringify(value));
-    } catch {
-      // error reading value
+    } catch (error) {
+      console.log("useStorage:set", error);
     }
   }
 
