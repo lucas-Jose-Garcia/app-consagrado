@@ -1,4 +1,4 @@
-import { Button } from "@/components/button";
+import { Button, ButtonText } from "@/components/button";
 import { PrayerCard } from "@/components/card/prayerCard";
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { ProgressCard } from "@/components/progressCard";
@@ -42,7 +42,7 @@ export default function Consecration() {
             />
           ))}
           <Button>
-            <Button.Text text="Precisa ajustar seu progresso?" className="text-gray-400" />
+            <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
           </Button>
         </ScrollView>
         <Button text="Teste" onPress={async () => await progress.testes()} />

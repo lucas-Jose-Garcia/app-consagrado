@@ -1,6 +1,6 @@
 import { ActionButton } from "@/components/actionButton";
 import { Back } from "@/components/back";
-import { Button } from "@/components/button";
+import { Button, ButtonIcon, ButtonText } from "@/components/button";
 import { ExpandableCard } from "@/components/card/expandableCard";
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { XStack, YStack } from "@/components/conteineres/stacks";
@@ -8,12 +8,7 @@ import { FeaturedImage } from "@/components/featuredImage";
 import { H1, H2 } from "@/components/text/headings";
 import { Paragraph } from "@/components/text/paragraph";
 import { getDayofWeek } from "@/data/global";
-import {
-  InfoGroupProps,
-  RosaryPrayersProps,
-  getGroupInfo,
-  getPrayersRosary,
-} from "@/data/rosary";
+import { InfoGroupProps, RosaryPrayersProps, getGroupInfo, getPrayersRosary } from "@/data/rosary";
 import { colors } from "@/styles/colors";
 import { Feather } from "@expo/vector-icons";
 import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
@@ -55,10 +50,7 @@ export default function Prayer() {
   function hendleMove(move: number) {
     if (!current || !rosary) return;
 
-    if (
-      (move > 0 && current.prayed < current.occurrences) ||
-      (move < 0 && current.prayed > 1)
-    ) {
+    if ((move > 0 && current.prayed < current.occurrences) || (move < 0 && current.prayed > 1)) {
       setCurrent((prevState) => {
         if (!prevState) return null;
         return {
@@ -126,17 +118,11 @@ export default function Prayer() {
             <>
               <FeaturedImage
                 uri={current.image}
-                legend={
-                  current.type === "Mystery" ? current.description : undefined
-                }
+                legend={current.type === "Mystery" ? current.description : undefined}
               />
 
               <YStack className="w-full mt-4 px-6">
-                <H2>
-                  {current.type === "Mystery"
-                    ? `${current.order}º Mistério`
-                    : current.description}
-                </H2>
+                <H2>{current.type === "Mystery" ? `${current.order}º Mistério` : current.description}</H2>
                 <ExpandableCard
                   text={current.content["pt-br"].text.join("\n")}
                   numberOfLines={3}
@@ -145,19 +131,12 @@ export default function Prayer() {
               </YStack>
 
               <XStack className="flex-1 w-full justify-between items-center mt-6 px-12">
-                <ActionButton
-                  icon="caretleft"
-                  onPress={() => hendleMove(-1)}
-                  active={firstId !== current.id}
-                />
+                <ActionButton icon="caretleft" onPress={() => hendleMove(-1)} active={firstId !== current.id} />
 
                 <XStack className="items-center gap-1">
                   <H1 className="text-4xl">{String(current.prayed)}</H1>
                   <Paragraph text="/" className="text-sm" />
-                  <Paragraph
-                    text={String(current.occurrences)}
-                    className="text-sm"
-                  />
+                  <Paragraph text={String(current.occurrences)} className="text-sm" />
                 </XStack>
                 <ActionButton icon="caretright" onPress={() => hendleMove(1)} />
               </XStack>
@@ -166,10 +145,7 @@ export default function Prayer() {
             <>
               {info && (
                 <YStack className="w-full h-full">
-                  <View
-                    ref={finishedRef}
-                    className="w-full items-center pb-3 bg-gray-950 rounded-md"
-                  >
+                  <View ref={finishedRef} className="w-full items-center pb-3 bg-gray-950 rounded-md">
                     <FeaturedImage uri={info.image} className="h-96" />
                     <H2>{info.title}</H2>
                     <Paragraph text={`${dayWeek} - ${formattedDate}`} />
@@ -177,14 +153,11 @@ export default function Prayer() {
 
                   <YStack className="flex-1 justify-between">
                     <Button className="mt-4" onPress={shereFinished}>
-                      <Button.Icon icon="sharealt" />
-                      <Button.Text text="Compartilhar" className="uppercase" />
+                      <ButtonIcon icon="sharealt" />
+                      <ButtonText text="Compartilhar" className="uppercase" />
                     </Button>
-                    <Button
-                      className="mb-4"
-                      onPress={() => router.replace("(tabs)/rosary")}
-                    >
-                      <Button.Text text="Voltar" className="uppercase" />
+                    <Button className="mb-4" onPress={() => router.replace("(tabs)/rosary")}>
+                      <ButtonText text="Voltar" className="uppercase" />
                     </Button>
                   </YStack>
                 </YStack>
