@@ -45,6 +45,12 @@ export function useProgress() {
     return data ?? initial;
   }
 
+  async function set(day: number) {
+    const newValue = (await consagracao.get()) ?? initial;
+    newValue.day = day;
+    await consagracao.set(newValue);
+  }
+
   async function testes() {
     await consagracao.set({
       day: 12,
@@ -52,5 +58,5 @@ export function useProgress() {
     });
   }
 
-  return { increment, decrement, get, testes };
+  return { increment, decrement, set, get, testes };
 }

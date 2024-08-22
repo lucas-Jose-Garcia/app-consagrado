@@ -1,3 +1,5 @@
+import { BottomSheetNative } from "@/components/bottomSheet";
+import { BottonSheetAdjust } from "@/components/bottomSheet/adjust";
 import { Button, ButtonText } from "@/components/button";
 import { PrayerCard } from "@/components/card/prayerCard";
 import { Conteiner } from "@/components/conteineres/conteiner";
@@ -7,11 +9,12 @@ import { DataConsecration } from "@/data/consecration";
 import { ProgressProps, useProgress } from "@/hooks/progress";
 import { colors } from "@/styles/colors";
 import { useFocusEffect } from "expo-router";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { ScrollView, Text } from "react-native";
 
 export default function Consecration() {
   const progress = useProgress();
+  const BottomSheetRef = useRef<BottomSheetNative>(null);
   const [info, setInfo] = useState<ProgressProps | null>(null);
 
   const getProgress = async () => {
@@ -19,34 +22,46 @@ export default function Consecration() {
     setInfo(data);
   };
 
+  const onClose = () => {
+    getProgress();
+    BottomSheetRef.current?.close();
+  };
+
+  function openBottonSheet() {
+    BottomSheetRef.current?.expand();
+  }
+
   useFocusEffect(
     useCallback(() => {
       getProgress();
     }, [])
   );
   return (
-    <Conteiner>
-      <Conteiner.Header icone="crown-outline" title="Consagração" />
-      <Conteiner.Box>
-        <ProgressCard value={info?.day ?? 0} maxValue={33} />
+    <>
+      <Conteiner>
+        <Conteiner.Header icone="crown-outline" title="Consagração" />
+        <Conteiner.Box>
+          <ProgressCard value={info?.day ?? 0} maxValue={33} />
 
-        <ScrollView className="flex-1 w-full mt-3">
-          {DataConsecration.map((item) => (
-            <PrayerCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              preview={item.description}
-              uri={item.image}
-              type="consecration"
-            />
-          ))}
-          <Button>
-            <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
-          </Button>
-        </ScrollView>
-        <Button text="Teste" onPress={async () => await progress.testes()} />
-      </Conteiner.Box>
-    </Conteiner>
+          <ScrollView className="flex-1 w-full mt-3">
+            {DataConsecration.map((item) => (
+              <PrayerCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                preview={item.description}
+                uri={item.image}
+                type="consecration"
+              />
+            ))}
+            <Button onPress={openBottonSheet}>
+              <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
+            </Button>
+          </ScrollView>
+          <Button text="Teste" onPress={async () => await progress.testes()} />
+        </Conteiner.Box>
+      </Conteiner>
+      <BottonSheetAdjust ref={BottomSheetRef} limit={33} onClose={onClose} />
+    </>
   );
 }

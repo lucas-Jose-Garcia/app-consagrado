@@ -1,9 +1,9 @@
-import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
+import { BottomSheetView } from "@gorhom/bottom-sheet";
 import { ForwardedRef, forwardRef } from "react";
 import { Paragraph } from "../text/paragraph";
 import { BottomSheetNative, BottomSheetRoot } from ".";
 import { Button, ButtonIcon, ButtonText } from "../button";
-import { XStack, YStack } from "../conteineres/stacks";
+import { XStack } from "../conteineres/stacks";
 import { H2 } from "../text/headings";
 
 interface ButtonProps {
