@@ -1,5 +1,5 @@
 import { BottomSheetScrollView, BottomSheetView } from "@gorhom/bottom-sheet";
-import { ForwardedRef, forwardRef, useEffect, useState } from "react";
+import { ForwardedRef, forwardRef, useCallback, useEffect, useState } from "react";
 import { Paragraph } from "../text/paragraph";
 import { BottomSheetNative, BottomSheetRoot } from ".";
 import { Button, ButtonIcon, ButtonText } from "../button";
@@ -7,6 +7,7 @@ import { XStack, YStack } from "../conteineres/stacks";
 import { H1, H2 } from "../text/headings";
 import { TouchableOpacity } from "react-native";
 import { useProgress } from "@/hooks/progress";
+import { useFocusEffect } from "expo-router";
 
 interface ButtonProps {
   active: boolean;
@@ -38,9 +39,11 @@ const BottonSheetAdjust = forwardRef(function BottonSheetAdjust(
     onClose();
   };
 
-  useEffect(() => {
-    fetchDay();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchDay();
+    }, [])
+  );
 
   return (
     <BottomSheetRoot ref={ref}>

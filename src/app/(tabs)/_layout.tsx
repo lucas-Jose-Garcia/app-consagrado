@@ -30,7 +30,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="consecration"
+        name="index"
         options={{
           title: "Consagração",
           tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="crown-outline" color={color} />,

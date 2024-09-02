@@ -25,9 +25,10 @@ import { ConsecrationDetails } from "@/components/consecrationDetails";
 const Tab = createMaterialTopTabNavigator();
 
 export default function Prayer() {
-  const { id, type } = useLocalSearchParams<{
+  const { id, type, current } = useLocalSearchParams<{
     id: string;
     type?: "simple" | "rosary" | "consecration";
+    current?: "ativo" | "inativo";
   }>();
   const [player, setPlayer] = useState<DataPrayersProps | null>(null);
   const [rosary, setRosary] = useState<GroupMysteriesProps | null>(null);
@@ -78,7 +79,13 @@ export default function Prayer() {
 
       {isRosary && <RosaryDetails rosary={rosary} id={id} />}
 
-      {isConsecration && <ConsecrationDetails consecration={consecration} infoConsecration={infoConsecration} />}
+      {isConsecration && (
+        <ConsecrationDetails
+          consecration={consecration}
+          infoConsecration={infoConsecration}
+          current={current === "ativo"}
+        />
+      )}
     </Conteiner>
   );
 }

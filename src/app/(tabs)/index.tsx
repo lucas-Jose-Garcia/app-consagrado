@@ -14,13 +14,13 @@ import { ScrollView, Text } from "react-native";
 
 interface DataProps extends DataConsecrationProps {
   value?: number;
+  current?: boolean;
 }
 
 export default function Consecration() {
   const progress = useProgress();
   const BottomSheetRef = useRef<BottomSheetNative>(null);
   const [info, setInfo] = useState<ProgressProps | null>(null);
-  const [listProgess, setListProgress] = useState<number[]>([]);
   const [data, setData] = useState<DataProps[] | null>(null);
 
   const getProgress = async () => {
@@ -47,9 +47,11 @@ export default function Consecration() {
     newData.forEach((item) => {
       restDays -= item.days;
       let progress = 0;
+      item.current = false;
 
       if (restDays < 0 && !finish) {
         progress = item.days + restDays;
+        item.current = true;
         finish = true;
       } else if (restDays >= 0) {
         progress = item.days;
@@ -74,7 +76,7 @@ export default function Consecration() {
           <ScrollView className="flex-1 w-full mt-3" showsVerticalScrollIndicator={false}>
             <ProgressCard value={info?.day ?? 0} maxValue={33} />
             {data &&
-              data.map((item, i) => (
+              data.map((item) => (
                 <PrayerCard
                   key={item.id}
                   id={item.id}
@@ -85,6 +87,7 @@ export default function Consecration() {
                     value: item.value ?? 0,
                     max: item.days,
                   }}
+                  current={item.current}
                   type="consecration"
                 />
               ))}

@@ -18,9 +18,10 @@ import { colors } from "@/styles/colors";
 interface ConsecrationDetailsProps {
   consecration: DataConsecrationProps;
   infoConsecration: PrayersProps[];
+  current: boolean;
 }
 
-export function ConsecrationDetails({ consecration, infoConsecration }: ConsecrationDetailsProps) {
+export function ConsecrationDetails({ consecration, infoConsecration, current }: ConsecrationDetailsProps) {
   const progress = useProgress();
   const thirdDay = currentRosary();
   const [info, setInfo] = useState<ProgressProps | null>(null);
@@ -84,24 +85,25 @@ export function ConsecrationDetails({ consecration, infoConsecration }: Consecra
           </>
         )}
       </ScrollView>
-      <YStack className="items-center">
-        {!isRegisteredToday ? (
-          <>
-            <Button text="Amém" IconSvg={Cheer} onPress={handleIncrement} color="primary" className="mt-3 mb-2" />
-            <H3 className="text-gray-400 text-center mb-2">
-              {isRegisteredToday
-                ? "Parabéns, você finalizou o dia de hoje! \n Continue assim amanhã!"
-                : "Clique para concluir o dia"}
-            </H3>
-          </>
-        ) : (
-          <XStack className="gap-4 mt-3 mb-5">
-            <AntDesign name="heart" size={32} color={colors.primary["400"]} />
-            <H3 className="text-gray-400 text-center">
-              {"Parabéns, você finalizou o dia de hoje!\nContinue assim amanhã!"}
-            </H3>
-          </XStack>
-        )}
+      <YStack className="items-center p-3">
+        {current &&
+          (!isRegisteredToday ? (
+            <>
+              <Button text="Amém" IconSvg={Cheer} onPress={handleIncrement} color="primary" className="mt-3 mb-2" />
+              <H3 className="text-gray-400 text-center mb-2">
+                {isRegisteredToday
+                  ? "Parabéns, você finalizou o dia de hoje! \n Continue assim amanhã!"
+                  : "Clique para concluir o dia"}
+              </H3>
+            </>
+          ) : (
+            <XStack className="gap-4 mt-3 mb-5">
+              <AntDesign name="heart" size={32} color={colors.primary["400"]} />
+              <H3 className="text-gray-400 text-center">
+                {"Parabéns, você finalizou o dia de hoje!\nContinue assim amanhã!"}
+              </H3>
+            </XStack>
+          ))}
       </YStack>
     </Conteiner.Box>
   );

@@ -5,8 +5,6 @@ import { XStack, YStack } from "../conteineres/stacks";
 import { H2 } from "../text/headings";
 import { Paragraph } from "../text/paragraph";
 import { router } from "expo-router";
-import * as Progress from "react-native-progress";
-import { useEffect, useState } from "react";
 import { ProgressBar, ProgressBarProps } from "../progressBar";
 interface PrayerCardProps {
   id: string;
@@ -15,10 +13,12 @@ interface PrayerCardProps {
   preview: string;
   type: "simple" | "rosary" | "consecration";
   progressBar?: Omit<ProgressBarProps, "suffix">;
+  current?: boolean;
 }
 
-export function PrayerCard({ id, uri, title, preview, type, progressBar }: PrayerCardProps) {
-  const onPress = () => router.push(`/prayer/${id}?type=${type}`);
+export function PrayerCard({ id, uri, title, preview, type, progressBar, current = true }: PrayerCardProps) {
+  const currentLabel = current ? "ativo" : "inativo";
+  const onPress = () => router.push(`/prayer/${id}?type=${type}&current=${currentLabel}`);
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <Card>
