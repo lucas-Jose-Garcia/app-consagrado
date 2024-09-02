@@ -52,10 +52,9 @@ export function useProgress() {
   }
 
   async function testes() {
-    await consagracao.set({
-      day: 12,
-      lastRegister: null,
-    });
+    const newValue = (await consagracao.get()) ?? initial;
+    newValue.lastRegister = null;
+    await consagracao.set(newValue);
   }
 
   return { increment, decrement, set, get, testes };

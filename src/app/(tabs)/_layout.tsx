@@ -21,18 +21,12 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
+          href: null,
           title: "Home",
           headerLeft: () => <MaterialCommunityIcons className="ml-4" size={28} name="church" color={"#e4e4e4"} />,
           tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="church" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="rosary"
-        options={{
-          title: "Terço",
-          tabBarIcon: ({ color }) => <Rosary width={28} height={28} fill={color} />,
         }}
       />
       <Tabs.Screen
@@ -42,6 +36,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="crown-outline" color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="rosary"
+        options={{
+          title: "Terço",
+          tabBarIcon: ({ color }) => <Rosary width={28} height={28} fill={color} />,
+        }}
+      />
+
       <Tabs.Screen
         name="prayers"
         options={{
