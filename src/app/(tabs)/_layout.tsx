@@ -21,15 +21,6 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="home"
-        options={{
-          href: null,
-          title: "Home",
-          headerLeft: () => <MaterialCommunityIcons className="ml-4" size={28} name="church" color={"#e4e4e4"} />,
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="church" color={color} />,
-        }}
-      />
-      <Tabs.Screen
         name="index"
         options={{
           title: "Consagração",
