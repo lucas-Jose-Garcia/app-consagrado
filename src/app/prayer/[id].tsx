@@ -1,23 +1,13 @@
 import { useCallback, useState } from "react";
-import { ScrollView } from "react-native";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
-import { NavigationContainer } from "@react-navigation/native";
+import { useFocusEffect, useLocalSearchParams } from "expo-router";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import { Conteiner } from "@/components/conteineres/conteiner";
-import { Paragraph } from "@/components/text/paragraph";
-import { DataPrayersProps, InfoPrayersProps, getPrayer, getPrayers } from "@/data/prayers";
-import { YStack } from "@/components/conteineres/stacks";
+import { DataPrayersProps, getPrayer, getPrayers } from "@/data/prayers";
 import { Conver, ConverProps } from "@/components/cover";
-import { PrayerText } from "@/components/prayerText";
-import { colors } from "@/styles/colors";
-import { GroupMysteriesProps, ListRosary, currentRosary, getRosary } from "@/data/rosary";
-import { Button } from "@/components/button";
+import { GroupMysteriesProps, getRosary } from "@/data/rosary";
 import { DataConsecrationProps, getStageConsecration } from "@/data/consecration";
-import { PrayerCard } from "@/components/card/prayerCard";
 import { PrayersProps } from "@/data/global";
-import { H3 } from "@/components/text/headings";
-import Cheer from "@/assets/cheer.svg";
 import { IndividualPrayer } from "@/components/individualPrayer";
 import { RosaryDetails } from "@/components/rosaryDetails";
 import { ConsecrationDetails } from "@/components/consecrationDetails";

@@ -28,27 +28,12 @@ function Conteiner({ className, children, ...rest }: ConteinerProps) {
   );
 }
 
-export function ConteinerHeader({
-  icone,
-  IconSvg,
-  title,
-  subtitle,
-  className,
-  ...rest
-}: ConteinerHeaderProps) {
+export function ConteinerHeader({ icone, IconSvg, title, subtitle, className, ...rest }: ConteinerHeaderProps) {
   return (
     <YStack className={className} {...rest}>
       <XStack className="mb-3 gap-2 justify-center items-center px-4 py-2">
-        {icone && (
-          <MaterialCommunityIcons
-            name={icone}
-            size={28}
-            color={colors.primary["400"]}
-          />
-        )}
-        {IconSvg && (
-          <IconSvg width={28} height={28} fill={colors.primary["400"]} />
-        )}
+        {icone && <MaterialCommunityIcons name={icone} size={28} color={colors.primary["400"]} />}
+        {IconSvg && <IconSvg width={28} height={28} fill={colors.primary["400"]} />}
         <H1>{title}</H1>
       </XStack>
       {subtitle && (
@@ -62,7 +47,7 @@ export function ConteinerHeader({
 
 function ConteinerBox({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("flex-1 items-center mx-4", className)} {...rest}>
+    <View className={cn("flex-1 items-center pt-4 mx-4", className)} {...rest}>
       {children}
     </View>
   );
