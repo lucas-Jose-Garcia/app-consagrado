@@ -95,7 +95,7 @@ export default function Consecration() {
               <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
             </Button>
           </ScrollView>
-          <Button text="Teste" onPress={async () => await progress.testes()} />
+          {/* <Button text="Teste" onPress={async () => await progress.testes()} /> */}
         </Conteiner.Box>
       </Conteiner>
       <BottonSheetAdjust ref={BottomSheetRef} limit={33} onClose={onClose} />

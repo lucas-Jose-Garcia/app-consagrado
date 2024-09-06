@@ -29,18 +29,8 @@ export function useLiturgy() {
   async function getLiturgy() {
     const apiResponse = await liturgy.get("");
     const response = apiResponse.data as ResponseLiturgyProps;
-    const listReadings: ReadingsOptions[] = [
-      "1ª Leitura",
-      "Salmo",
-      "2ª Leitura",
-      "Evangelho",
-    ];
 
-    if (typeof response.segundaLeitura == "string") {
-      listReadings.splice(2, 1);
-    }
-
-    return { response, listReadings };
+    return { response };
   }
 
   return { getLiturgy };

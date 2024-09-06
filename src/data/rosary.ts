@@ -23,6 +23,7 @@ export interface GroupProps {
   id: string;
   title: string;
   description: string;
+  youtubeId: string;
   image: string;
   days: DayOfWeek[];
   mysteries: MysteriesProps[] | string[];
@@ -101,6 +102,7 @@ export const DataRosary: DataRosaryProps = {
         description:
           "Contemplamos todos os mistérios passando pelo nascimento, vida, morte e ressureição de Nosso Senhor Jesus Cristo.",
         image: "https://images.a12.com/source/files/c/315546/Maos_rezando_o_terco-790718_1481-989-0-0.jpg",
+        youtubeId: "rI5aj8_S_ak",
         days: [],
         mysteries: [
           "7681f562-93bc-4631-a08f-85e729602c26",
@@ -116,6 +118,7 @@ export const DataRosary: DataRosaryProps = {
           "Nos Mistérios Gozosos contemplamos a alegria que emana da Encarnação de Jesus. Maria leva-nos a aprender o segredo da alegria cristã, lembrando-nos que o cristianismo é, antes de mais, evangelion, “boa nova”, que tem o seu centro, antes, o seu mesmo conteúdo, na pessoa de Cristo, o Verbo feito carne, único Salvador do mundo (São João Paulo II, 2002).",
         image:
           "https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2021/03/formacao_1600x1200-anunciacao-do-senhor-o-sim-que-salvou-a-humanidade.png",
+        youtubeId: "EKTz4C44aEc",
         days: [1, 6],
         mysteries: [
           {
@@ -168,6 +171,7 @@ export const DataRosary: DataRosaryProps = {
           "No Mistérios Luminosos contemplamos a vida pública de Jesus. Cada um destes mistérios é revelação do Reino divino já personificado em Jesus que se revela como a 'luz do mundo' (Jo 8, 12) por isso são chamados de 'luminosos' (São João Paulo II, 2002)",
         image:
           "https://www.santateresinhahigienopolis.org.br/images/uploads/posts/1608209859batismo%20do%20senhor%203.jpg",
+        youtubeId: "lO0uMSJa8g0",
         days: [4],
         mysteries: [
           {
@@ -222,6 +226,7 @@ export const DataRosary: DataRosaryProps = {
           "No Mistérios Dolorozos contemplamos os momentos da Paixão de nosso Senhor Jesus Cristo. Esses mistérios revelam o ápice da revelação do amor de Deus e a fonte da nossa salvação (São João Paulo II, 2002).",
         image:
           "https://s3.sa-east-1.amazonaws.com/arquivos.padrepauloricardo.org/uploads/episodio/frame/4051/large_5-a-oracao-de-jesus-no-horto-e-o-suor-de-sangue-frame.jpg",
+        youtubeId: "0_jGY4bB0lw",
         days: [2, 5],
         mysteries: [
           {
@@ -276,6 +281,7 @@ export const DataRosary: DataRosaryProps = {
         description:
           "No Mistérios Gloriosos contemplamos a Ressureição de Jesus. Estes mistérios convidam o fiel a ultrapassar as trevas da Paixão  para fixar o olhar na glória de Cristo com a Ressurreição e a Ascensão (São João Paulo II, 2002).",
         image: "https://comunidadeoasis.org.br/wp-content/uploads/2021/04/Esplendor-da-Verdade370.png",
+        youtubeId: "j84Cg9GYO3o",
         days: [0, 3],
         mysteries: [
           {
@@ -488,6 +494,7 @@ export function getGroupInfo(id: string): InfoGroupProps {
     title: data.title,
     description: data.description,
     image: data.image,
+    youtubeId: data.youtubeId,
     days: data.days,
   };
 

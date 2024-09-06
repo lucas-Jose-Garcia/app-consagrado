@@ -13,19 +13,12 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function Liturgy() {
   const { getLiturgy } = useLiturgy();
-  const [readings, setReadings] = useState<ReadingsOptions[]>([]);
   const [data, setData] = useState<ResponseLiturgyProps | null>(null);
-  const [currentReading, setCurrentReading] = useState<string>(LEITURAS[0]);
-
-  function handleSelectReading(reading: string) {
-    setCurrentReading(reading);
-  }
 
   async function updateLiturgy() {
-    const { response, listReadings } = await getLiturgy();
+    const { response } = await getLiturgy();
 
     setData(response);
-    setReadings(listReadings);
   }
 
   useFocusEffect(
@@ -35,11 +28,11 @@ export default function Liturgy() {
   );
 
   const FirstReading = () => <CardReading title="1ª Leitura" data={data?.primeiraLeitura} />;
-  const Psalm = () => <CardReading title="1ª Leitura" data={data?.salmo} />;
+  const Psalm = () => <CardReading title="Salmo" data={data?.salmo} />;
   const SecondReading = () => (
-    <CardReading title="1ª Leitura" data={typeof data?.segundaLeitura != "string" ? data?.segundaLeitura : undefined} />
+    <CardReading title="2ª Leitura" data={typeof data?.segundaLeitura != "string" ? data?.segundaLeitura : undefined} />
   );
-  const Gospel = () => <CardReading title="1ª Leitura" data={data?.evangelho} />;
+  const Gospel = () => <CardReading title="Evangelho" data={data?.evangelho} />;
 
   return (
     <Conteiner>
@@ -50,6 +43,7 @@ export default function Liturgy() {
             tabBarIndicatorContainerStyle: {
               backgroundColor: colors.gray["900"],
             },
+            tabBarLabelStyle: { fontSize: 12 },
             tabBarActiveTintColor: colors.primary["400"],
             tabBarInactiveTintColor: colors.gray["200"],
             tabBarIndicatorStyle: {

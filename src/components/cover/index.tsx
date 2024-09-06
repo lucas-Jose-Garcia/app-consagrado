@@ -14,9 +14,10 @@ export interface ConverProps {
   image: string;
   title: string;
   youtubeId?: string;
+  showHeader?: boolean;
 }
 
-export function Conver({ image, title, youtubeId }: ConverProps) {
+export function Conver({ image, title, youtubeId, showHeader = true }: ConverProps) {
   const [videoReady, setVideoReady] = useState(false);
 
   if (!youtubeId || youtubeId === "") {
@@ -45,13 +46,15 @@ export function Conver({ image, title, youtubeId }: ConverProps) {
   }
 
   return (
-    <YStack>
-      <XStack className="items-center gap-1">
-        <Back />
-        <H2 className="w-5/6" numberOfLines={1}>
-          {title}
-        </H2>
-      </XStack>
+    <YStack className="w-full">
+      {showHeader && (
+        <XStack className="items-center gap-1">
+          <Back />
+          <H2 className="w-5/6" numberOfLines={1}>
+            {title}
+          </H2>
+        </XStack>
+      )}
       <YStack className="h-[230px] justify-center">
         <YoutubePlayer videoId={youtubeId} height={videoReady ? VIDEO_HEIGHT : 0} onReady={() => setVideoReady(true)} />
         {!videoReady && <ActivityIndicator color={"#ff0000"} size={24} />}
