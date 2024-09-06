@@ -4,13 +4,11 @@ import { Button, ButtonText } from "@/components/button";
 import { PrayerCard } from "@/components/card/prayerCard";
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { ProgressCard } from "@/components/progressCard";
-import { H3 } from "@/components/text/headings";
 import { DataConsecration, DataConsecrationProps } from "@/data/consecration";
 import { ProgressProps, useProgress } from "@/hooks/progress";
-import { colors } from "@/styles/colors";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { ScrollView, Text } from "react-native";
+import { ScrollView } from "react-native";
 
 interface DataProps extends DataConsecrationProps {
   value?: number;
@@ -69,36 +67,34 @@ export default function Consecration() {
     }, [])
   );
   return (
-    <>
-      <Conteiner>
-        <Conteiner.Header icone="crown-outline" title="Consagração" />
-        <Conteiner.Box>
-          <ScrollView className="flex-1 w-full mt-3" showsVerticalScrollIndicator={false}>
-            <ProgressCard value={info?.day ?? 0} maxValue={33} />
-            {data &&
-              data.map((item) => (
-                <PrayerCard
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  preview={item.description}
-                  uri={item.image}
-                  progressBar={{
-                    value: item.value ?? 0,
-                    max: item.days,
-                  }}
-                  current={item.current}
-                  type="consecration"
-                />
-              ))}
-            <Button onPress={openBottonSheet}>
-              <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
-            </Button>
-          </ScrollView>
-          {/* <Button text="Teste" onPress={async () => await progress.testes()} /> */}
-        </Conteiner.Box>
-      </Conteiner>
+    <Conteiner>
+      <Conteiner.Header icone="crown-outline" title="Consagração" />
+      <Conteiner.Box>
+        <ScrollView className="flex-1 w-full mt-3" showsVerticalScrollIndicator={false}>
+          <ProgressCard value={info?.day ?? 0} maxValue={33} />
+          {data &&
+            data.map((item) => (
+              <PrayerCard
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                preview={item.description}
+                uri={item.image}
+                progressBar={{
+                  value: item.value ?? 0,
+                  max: item.days,
+                }}
+                current={item.current}
+                type="consecration"
+              />
+            ))}
+          <Button onPress={openBottonSheet}>
+            <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
+          </Button>
+        </ScrollView>
+        {/* <Button text="Teste" onPress={async () => await progress.testes()} /> */}
+      </Conteiner.Box>
       <BottonSheetAdjust ref={BottomSheetRef} limit={33} onClose={onClose} />
-    </>
+    </Conteiner>
   );
 }
