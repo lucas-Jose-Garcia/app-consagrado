@@ -18,7 +18,7 @@ import {
 } from "@/data/rosary";
 import { colors } from "@/styles/colors";
 import { Feather } from "@expo/vector-icons";
-import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { useFocusEffect, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useRef, useState } from "react";
 import { Alert, ScrollView, TouchableOpacity, View } from "react-native";
 import { captureRef } from "react-native-view-shot";
@@ -32,6 +32,7 @@ export default function Prayer() {
   const { id } = useLocalSearchParams<{
     id: string;
   }>();
+  const router = useRouter();
 
   const [current, setCurrent] = useState<RosaryPrayersProps | null>(null);
   const [rosary, setRosary] = useState<RosaryPrayersProps[] | null>(null);
@@ -122,7 +123,7 @@ export default function Prayer() {
   return (
     <Conteiner>
       <XStack className="w-full items-center justify-between">
-        <Back replace="(tabs)/rosary" />
+        <Back replace={{ pathname: "/(tabs)/rosary" }} />
         {youtubeId == "" ? (
           <TouchableOpacity activeOpacity={0.7} onPress={() => handleWatchingVideo(info?.youtubeId ?? "")}>
             <XStack className="items-center gap-3 mr-4">
@@ -181,7 +182,7 @@ export default function Prayer() {
                         <ButtonIcon icon="sharealt" />
                         <ButtonText text="Compartilhar" className="uppercase" />
                       </Button>
-                      <Button className="mb-4" onPress={() => router.replace("(tabs)/rosary")}>
+                      <Button className="mb-4" onPress={() => router.replace({ pathname: "/(tabs)/rosary" })}>
                         <ButtonText text="Voltar" className="uppercase" />
                       </Button>
                     </YStack>

@@ -39,7 +39,14 @@ export function ProgressCard({ value, maxValue }: ProgressCardProps) {
             } sua preparação para a Total Constração a Jesus pelas mãos de Maria`}
           />
 
-          <Link href={`/prayer/${id}?type=consecration&current=ativo`} className="mt-4" asChild>
+          <Link
+            href={{
+              pathname: "/prayer/[id]",
+              params: { id, type: "consecration", current: "ativo" },
+            }}
+            className="mt-4"
+            asChild
+          >
             <Button text="Orações de hoje" color="primary" />
           </Link>
         </YStack>

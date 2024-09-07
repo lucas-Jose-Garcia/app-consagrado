@@ -1,12 +1,11 @@
 import { colors } from "@/styles/colors";
 import { AntDesign } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Href, router } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { YStack } from "../conteineres/stacks";
-import { ExpoRouter } from "expo-router/types/expo-router";
 
 interface BackProps {
-  replace?: ExpoRouter.Href;
+  replace?: Href;
 }
 
 export function Back({ replace }: BackProps) {

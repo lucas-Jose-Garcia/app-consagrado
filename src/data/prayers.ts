@@ -124,7 +124,7 @@ export const DataPrayers: DataPrayersProps[] = [
     content: {
       "pt-br": {
         media: {
-          youtubeId: "OJRJjzQyeEuKWOol",
+          youtubeId: "qbqyXRAySbs",
         },
         text: [
           "Vinde, Espírito Criador,",
@@ -170,7 +170,7 @@ export const DataPrayers: DataPrayersProps[] = [
       },
       la: {
         media: {
-          youtubeId: "Qzsb37YUSWEXbKsO",
+          youtubeId: "HEKuxUOPzk8",
         },
         text: [
           "Veni, creator Spiritus,",

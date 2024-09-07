@@ -2,7 +2,7 @@ import { ReadingsOptions } from "@/components/liturgy/cardReading";
 import axios from "axios";
 
 const liturgy = axios.create({
-  baseURL: "https://liturgiadiaria.site",
+  baseURL: "https://liturgiadiaria.site/08-09",
 });
 
 export interface ItemLiturgyProps {

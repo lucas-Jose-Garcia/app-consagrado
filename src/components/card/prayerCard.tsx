@@ -6,6 +6,7 @@ import { H2 } from "../text/headings";
 import { Paragraph } from "../text/paragraph";
 import { router } from "expo-router";
 import { ProgressBar, ProgressBarProps } from "../progressBar";
+
 interface PrayerCardProps {
   id: string;
   uri: string;
@@ -18,7 +19,11 @@ interface PrayerCardProps {
 
 export function PrayerCard({ id, uri, title, preview, type, progressBar, current = true }: PrayerCardProps) {
   const currentLabel = current ? "ativo" : "inativo";
-  const onPress = () => router.push(`/prayer/${id}?type=${type}&current=${currentLabel}`);
+  const onPress = () =>
+    router.push({
+      pathname: "/prayer/[id]",
+      params: { id, type, current: currentLabel },
+    });
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <Card>
