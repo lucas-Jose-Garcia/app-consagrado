@@ -1,9 +1,12 @@
 import { Conteiner } from "@/components/conteineres/conteiner";
+import { XStack } from "@/components/conteineres/stacks";
 import { CardReading, ReadingsOptions } from "@/components/liturgy/cardReading";
+import { H3 } from "@/components/text/headings";
 import { ResponseLiturgyProps, useLiturgy } from "@/hooks/liturgy";
 import { colors } from "@/styles/colors";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import { format } from "date-fns";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
 
@@ -34,9 +37,14 @@ export default function Liturgy() {
   );
   const Gospel = () => <CardReading title="Evangelho" data={data?.evangelho} />;
 
+  const formattedDate = format(new Date(), "dd.MM.yyyy");
+
   return (
     <Conteiner>
       <Conteiner.Header icone="book-outline" title="Liturgia" />
+      <XStack className="w-100 justify-center pb-3 -mt-3">
+        <H3 className="text-gray-400">{formattedDate}</H3>
+      </XStack>
       <NavigationContainer independent>
         <Tab.Navigator
           screenOptions={{

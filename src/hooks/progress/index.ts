@@ -53,7 +53,7 @@ export function useProgress() {
 
   async function testes() {
     const newValue = (await consagracao.get()) ?? initial;
-    newValue.lastRegister = null;
+    newValue.lastRegister = "2024-09-07T12:46:29.842Z";
     await consagracao.set(newValue);
   }
 
