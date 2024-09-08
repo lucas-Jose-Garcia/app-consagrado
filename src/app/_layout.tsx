@@ -8,6 +8,9 @@ import { Vollkorn_400Regular_Italic } from "@expo-google-fonts/vollkorn";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const insets = useSafeAreaInsets();
