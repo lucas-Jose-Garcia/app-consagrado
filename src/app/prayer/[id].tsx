@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 import { useFocusEffect, useLocalSearchParams } from "expo-router";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { DataPrayersProps, getPrayer, getPrayers } from "@/data/prayers";
@@ -11,8 +10,6 @@ import { PrayersProps } from "@/data/global";
 import { IndividualPrayer } from "@/components/individualPrayer";
 import { RosaryDetails } from "@/components/rosaryDetails";
 import { ConsecrationDetails } from "@/components/consecrationDetails";
-
-const Tab = createMaterialTopTabNavigator();
 
 export default function Prayer() {
   const { id, type, current } = useLocalSearchParams<{

@@ -21,7 +21,7 @@ export function H1({ className, children, ...rest }: HeadingsProps) {
 
 export function H2({ className, children, ...rest }: HeadingsProps) {
   return (
-    <Text className={cn("font-subtible text-xl text-gray-100", className)} {...rest}>
+    <Text className={cn("font-subtitle text-xl text-gray-100", className)} {...rest}>
       {children}
     </Text>
   );
@@ -29,7 +29,7 @@ export function H2({ className, children, ...rest }: HeadingsProps) {
 
 export function H3({ className, children, ...rest }: HeadingsProps) {
   return (
-    <Text className={cn("font-subtible text-base text-gray-100", className)} {...rest}>
+    <Text className={cn("font-subtitle text-base text-gray-100", className)} {...rest}>
       {children}
     </Text>
   );

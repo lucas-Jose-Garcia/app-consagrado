@@ -1,6 +1,6 @@
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { XStack } from "@/components/conteineres/stacks";
-import { CardReading, ReadingsOptions } from "@/components/liturgy/cardReading";
+import { CardReading } from "@/components/liturgy/cardReading";
 import { H3 } from "@/components/text/headings";
 import { ResponseLiturgyProps, useLiturgy } from "@/hooks/liturgy";
 import { colors } from "@/styles/colors";
@@ -9,8 +9,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { format } from "date-fns";
 import { useFocusEffect } from "expo-router";
 import { useCallback, useState } from "react";
-
-const LEITURAS: ReadingsOptions[] = ["1ª Leitura", "Salmo", "2ª Leitura", "Evangelho"];
 
 const Tab = createMaterialTopTabNavigator();
 
