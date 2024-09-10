@@ -13,9 +13,17 @@ export interface TabBarItemProps {
 export interface TabBarProps {
   itens: TabBarItemProps[];
   enableScroll?: boolean;
+  error?: {
+    isError: boolean;
+    renderError: ReactNode;
+  };
 }
 
-export function TabBar({ itens, enableScroll = false }: TabBarProps) {
+export function TabBar({
+  itens,
+  enableScroll = false,
+  error: { isError, renderError } = { isError: false, renderError: null },
+}: TabBarProps) {
   const [flatListRef, setFlatListRef] = useState<FlatList | null>(null);
   const [activeItem, setActiveItem] = useState(itens[0].key);
 
@@ -74,7 +82,7 @@ export function TabBar({ itens, enableScroll = false }: TabBarProps) {
               >
                 <XStack
                   className={cn(
-                    "flex-1 justify-center items-center px-4 pt-0.5 ",
+                    "flex-1 justify-center items-center px-4 pt-0.5",
                     activeItem === item
                       ? "border-0 border-b-2 border-solid border-b-primary-400"
                       : "border-0 border-b-2 border-solid border-b-gray-900"
@@ -86,19 +94,21 @@ export function TabBar({ itens, enableScroll = false }: TabBarProps) {
             ))}
         </XStack>
       )}
-      {itens.map((x) =>
-        x.key === activeItem ? (
-          <View key={x.key} className="flex-1">
-            {x.renderItem ? (
-              x.renderItem
-            ) : (
-              <View className="flex-1 justify-center">
-                <ActivityIndicator color={colors.primary[400]} size={"large"} />
-              </View>
-            )}
-          </View>
-        ) : null
-      )}
+      {!isError &&
+        itens.map((x) =>
+          x.key === activeItem ? (
+            <View key={x.key} className="flex-1">
+              {x.renderItem ? (
+                x.renderItem
+              ) : (
+                <View className="flex-1 justify-center">
+                  <ActivityIndicator color={colors.primary[400]} size={"large"} />
+                </View>
+              )}
+            </View>
+          ) : null
+        )}
+      {isError && renderError}
     </>
   );
 }

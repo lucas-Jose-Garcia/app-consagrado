@@ -1,4 +1,4 @@
-import { Easing, Text, TouchableOpacity, View } from "react-native";
+import { Easing, Image, Text, TouchableOpacity, View } from "react-native";
 import { Card } from "./Card";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { XStack, YStack } from "../conteineres/stacks";
@@ -17,6 +17,9 @@ interface PrayerCardProps {
   current?: boolean;
 }
 
+const fallbackImage = require("..\\src\\assets\\avatar-fallback.png");
+const fallbackImagePath = Image.resolveAssetSource(fallbackImage).uri;
+
 export function PrayerCard({ id, uri, title, preview, type, progressBar, current = true }: PrayerCardProps) {
   const currentLabel = current ? "ativo" : "inativo";
   const onPress = () =>
@@ -30,6 +33,7 @@ export function PrayerCard({ id, uri, title, preview, type, progressBar, current
         <XStack className="items-center gap-3">
           <Avatar className="w-16 h-16">
             <AvatarImage source={{ uri }} />
+            <AvatarImage source={{ uri: fallbackImagePath }} />
             <AvatarFallback>{title[0]}</AvatarFallback>
           </Avatar>
           <YStack className="flex-1">

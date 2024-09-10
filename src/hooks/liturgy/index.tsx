@@ -3,6 +3,7 @@ import axios from "axios";
 
 const liturgy = axios.create({
   baseURL: "https://liturgiadiaria.site/",
+  timeout: 5000,
 });
 
 export interface ItemLiturgyProps {
@@ -32,23 +33,25 @@ export interface SectionReadingProps {
 
 export function useLiturgy() {
   async function getLiturgy() {
-    const apiResponse = await liturgy.get("");
-    const response = apiResponse.data as ResponseLiturgyProps;
-    const sectionReading: SectionReadingProps[] = [];
+    let isError = false;
 
-    sectionReading.push({ title: "1ª Leitura", data: response.primeiraLeitura });
-    sectionReading.push({ title: "Salmo", data: response.salmo });
-    if (typeof response.segundaLeitura !== "string") {
-      sectionReading.push({ title: "2ª Leitura", data: response.segundaLeitura });
+    try {
+      const apiResponse = await liturgy.get("");
+      const response = apiResponse.data as ResponseLiturgyProps;
+      const sectionReading: SectionReadingProps[] = [];
+
+      sectionReading.push({ title: "1ª Leitura", data: response.primeiraLeitura });
+      sectionReading.push({ title: "Salmo", data: response.salmo });
+      if (typeof response.segundaLeitura !== "string") {
+        sectionReading.push({ title: "2ª Leitura", data: response.segundaLeitura });
+      }
+      sectionReading.push({ title: "Evangelho", data: response.evangelho });
+
+      return { response, sectionReading, isError };
+    } catch (e) {
+      isError = true;
+      return { isError };
     }
-    sectionReading.push({ title: "Evangelho", data: response.evangelho });
-
-    const labels: ReadingsOptions[] =
-      sectionReading.length === 4
-        ? ["1ª Leitura", "Salmo", "2ª Leitura", "Evangelho"]
-        : ["1ª Leitura", "Salmo", "Evangelho"];
-
-    return { response, sectionReading, labels };
   }
 
   return { getLiturgy };
