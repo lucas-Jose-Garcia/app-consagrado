@@ -34,9 +34,6 @@ export default function Prayer() {
 
   useFocusEffect(
     useCallback(() => {
-      console.log("id", id);
-      console.log("type", type);
-      console.log("consagration", consecration);
       if (id !== undefined && type === "simple") {
         const data = getPrayer(id);
         setPlayer(data);

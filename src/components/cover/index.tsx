@@ -1,4 +1,4 @@
-import { ActivityIndicator, ImageBackground } from "react-native";
+import { ActivityIndicator, Image, ImageBackground, ImageSourcePropType } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import { XStack, YStack } from "@/components/conteineres/stacks";
@@ -6,9 +6,12 @@ import YoutubePlayer from "react-native-youtube-iframe";
 
 import { H2 } from "@/components/text/headings";
 import { Back } from "@/components/back";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const VIDEO_HEIGHT = 230;
+
+const fallbackImage = require("..\\src\\assets\\cover-fallback.jpg");
+const fallbackImagePath = Image.resolveAssetSource(fallbackImage).uri;
 
 export interface ConverProps {
   image: string;
@@ -19,10 +22,19 @@ export interface ConverProps {
 
 export function Conver({ image, title, youtubeId, showHeader = true }: ConverProps) {
   const [videoReady, setVideoReady] = useState(false);
+  const [currentSourse, setCurrentSource] = useState<ImageSourcePropType | undefined>({ uri: image });
+
+  const handleError = () => {
+    setCurrentSource({ uri: fallbackImagePath });
+  };
+
+  useEffect(() => {
+    setCurrentSource({ uri: image });
+  }, [image]);
 
   if (!youtubeId || youtubeId === "") {
     return (
-      <ImageBackground source={{ uri: image }} className="w-full h-64 justify-end">
+      <ImageBackground source={currentSourse} className="w-full h-64 justify-end" onError={handleError}>
         <LinearGradient
           colors={[
             "rgba(3, 7, 18, 0.2)",

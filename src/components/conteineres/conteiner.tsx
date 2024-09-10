@@ -47,7 +47,7 @@ export function ConteinerHeader({ icone, IconSvg, title, subtitle, className, ..
 
 function ConteinerBox({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("flex-1 items-center pt-4 mx-4", className)} {...rest}>
+    <View className={cn("flex-1 items-center mx-4", className)} {...rest}>
       {children}
     </View>
   );

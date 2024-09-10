@@ -70,7 +70,7 @@ export default function Consecration() {
     <Conteiner>
       <Conteiner.Header icone="crown-outline" title="Consagração" />
       <Conteiner.Box>
-        <ScrollView className="flex-1 w-full mt-3" showsVerticalScrollIndicator={false}>
+        <ScrollView className="flex-1 w-full" showsVerticalScrollIndicator={false}>
           <ProgressCard value={info?.day ?? 0} maxValue={33} />
           {data &&
             data.map((item) => (
