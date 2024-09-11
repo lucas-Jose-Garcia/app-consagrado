@@ -10,9 +10,6 @@ import { useEffect, useState } from "react";
 
 const VIDEO_HEIGHT = 230;
 
-const fallbackImage = require("..\\src\\assets\\cover-fallback.jpg");
-const fallbackImagePath = Image.resolveAssetSource(fallbackImage).uri;
-
 export interface ConverProps {
   image: string;
   title: string;
@@ -25,7 +22,7 @@ export function Conver({ image, title, youtubeId, showHeader = true }: ConverPro
   const [currentSourse, setCurrentSource] = useState<ImageSourcePropType | undefined>({ uri: image });
 
   const handleError = () => {
-    setCurrentSource({ uri: fallbackImagePath });
+    setCurrentSource(require("@/assets/cover-fallback.jpg"));
   };
 
   useEffect(() => {

@@ -13,13 +13,7 @@ export default function Prayers() {
           data={ListPrayers}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <PrayerCard
-              id={item.id}
-              title={item.title}
-              preview={item.preview}
-              uri={item.uri}
-              type="simple"
-            />
+            <PrayerCard id={item.id} title={item.title} preview={item.preview} uri={item.uri} type="simple" />
           )}
           className="w-full mb-3"
           showsVerticalScrollIndicator={false}

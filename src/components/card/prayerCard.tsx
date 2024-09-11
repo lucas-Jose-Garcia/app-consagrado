@@ -1,4 +1,4 @@
-import { Easing, Image, Text, TouchableOpacity, View } from "react-native";
+import { ImageSourcePropType, TouchableOpacity } from "react-native";
 import { Card } from "./Card";
 import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 import { XStack, YStack } from "../conteineres/stacks";
@@ -6,6 +6,7 @@ import { H2 } from "../text/headings";
 import { Paragraph } from "../text/paragraph";
 import { router } from "expo-router";
 import { ProgressBar, ProgressBarProps } from "../progressBar";
+import { useState } from "react";
 
 interface PrayerCardProps {
   id: string;
@@ -17,10 +18,13 @@ interface PrayerCardProps {
   current?: boolean;
 }
 
-const fallbackImage = require("..\\src\\assets\\avatar-fallback.png");
-const fallbackImagePath = Image.resolveAssetSource(fallbackImage).uri;
-
 export function PrayerCard({ id, uri, title, preview, type, progressBar, current = true }: PrayerCardProps) {
+  const [currentSourse, setCurrentSource] = useState<ImageSourcePropType | undefined>({ uri });
+
+  const handleError = () => {
+    setCurrentSource(require("@/assets/avatar-fallback.png"));
+  };
+
   const currentLabel = current ? "ativo" : "inativo";
   const onPress = () =>
     router.push({
@@ -32,8 +36,8 @@ export function PrayerCard({ id, uri, title, preview, type, progressBar, current
       <Card>
         <XStack className="items-center gap-3">
           <Avatar className="w-16 h-16">
-            <AvatarImage source={{ uri }} />
-            <AvatarImage source={{ uri: fallbackImagePath }} />
+            <AvatarImage source={currentSourse} onError={handleError} />
+            {/* <AvatarImage source={require("@/assets/avatar-fallback.png")} /> */}
             <AvatarFallback>{title[0]}</AvatarFallback>
           </Avatar>
           <YStack className="flex-1">

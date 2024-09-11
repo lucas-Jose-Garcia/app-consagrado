@@ -13,8 +13,8 @@ config.transformer = {
 
 config.resolver = {
   ...resolver,
-  assetExts: resolver.assetExts.filter((ext) => ext !== "svg").concat(["ttf", "otf"]),
-  sourceExts: [...resolver.sourceExts, "svg", "ttf", "otf"],
+  assetExts: resolver.assetExts.filter((ext) => ext !== "svg").concat(["ttf", "otf", "png", "jpg"]),
+  sourceExts: [...resolver.sourceExts, "svg", "ttf", "otf", "png", "jpg"],
 };
 
 module.exports = withNativeWind(config, { input: "./src/styles/global.css" });
