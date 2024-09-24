@@ -34,21 +34,27 @@ export function ProgressCard({ value, maxValue }: ProgressCardProps) {
           <H2>Sua Jornada</H2>
           <Paragraph
             className="text-sm"
-            text={`${
-              value == 0 ? "Inicie " : "Continue"
-            } sua preparação para a Total Constração a Jesus pelas mãos de Maria`}
+            text={
+              value === 33
+                ? "Que bom que você concluiu sua preparação! Agora, sua jornada começa! Salve Maria!"
+                : `${
+                    value == 0 ? "Inicie " : "Continue"
+                  } sua preparação para a Total Constração a Jesus pelas mãos de Maria`
+            }
           />
 
-          <Link
-            href={{
-              pathname: "/prayer/[id]",
-              params: { id, type: "consecration", current: "ativo" },
-            }}
-            className="mt-4"
-            asChild
-          >
-            <Button text="Orações de hoje" color="primary" />
-          </Link>
+          {value !== 33 && (
+            <Link
+              href={{
+                pathname: "/prayer/[id]",
+                params: { id, type: "consecration", current: "ativo" },
+              }}
+              className="mt-4"
+              asChild
+            >
+              <Button text="Orações de hoje" color="primary" />
+            </Link>
+          )}
         </YStack>
       </XStack>
     </Card>

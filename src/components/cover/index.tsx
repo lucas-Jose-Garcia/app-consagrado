@@ -7,6 +7,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { H2 } from "@/components/text/headings";
 import { Back } from "@/components/back";
 import { useEffect, useState } from "react";
+import { InlineHeader } from "../header/inlineHeader";
 
 const VIDEO_HEIGHT = 230;
 
@@ -56,14 +57,7 @@ export function Conver({ image, title, youtubeId, showHeader = true }: ConverPro
 
   return (
     <YStack className="w-full">
-      {showHeader && (
-        <XStack className="items-center gap-1">
-          <Back />
-          <H2 className="w-5/6" numberOfLines={1}>
-            {title}
-          </H2>
-        </XStack>
-      )}
+      {showHeader && <InlineHeader title={title} />}
       <YStack className="h-[230px] justify-center">
         <YoutubePlayer videoId={youtubeId} height={videoReady ? VIDEO_HEIGHT : 0} onReady={() => setVideoReady(true)} />
         {!videoReady && <ActivityIndicator color={"#ff0000"} size={24} />}

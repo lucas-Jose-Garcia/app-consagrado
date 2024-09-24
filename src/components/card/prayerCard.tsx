@@ -37,7 +37,6 @@ export function PrayerCard({ id, uri, title, preview, type, progressBar, current
         <XStack className="items-center gap-3">
           <Avatar className="w-16 h-16">
             <AvatarImage source={currentSourse} onError={handleError} />
-            {/* <AvatarImage source={require("@/assets/avatar-fallback.png")} /> */}
             <AvatarFallback>{title[0]}</AvatarFallback>
           </Avatar>
           <YStack className="flex-1">

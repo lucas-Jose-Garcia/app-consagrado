@@ -8,18 +8,28 @@ import { Vollkorn_400Regular_Italic } from "@expo-google-fonts/vollkorn";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
   const insets = useSafeAreaInsets();
 
-  let [fontsLoaded] = useFonts({
+  let [fontsLoaded, error] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold,
     Vollkorn_400Regular_Italic,
   });
 
-  if (!fontsLoaded) {
+  useEffect(() => {
+    if (fontsLoaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, error]);
+
+  if (!fontsLoaded && !error) {
     return null;
   }
 
@@ -30,6 +40,7 @@ export default function Layout() {
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="prayer" />
           <Stack.Screen name="rosary" />
+          <Stack.Screen name="adjustment" />
         </Stack>
         <StatusBar style="light" />
       </View>

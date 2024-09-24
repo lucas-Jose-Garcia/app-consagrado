@@ -1,14 +1,13 @@
 import { BottomSheetNative } from "@/components/bottomSheet";
-import { BottonSheetAdjust } from "@/components/bottomSheet/adjust";
-import { Button, ButtonText } from "@/components/button";
+import { ButtonText } from "@/components/button";
 import { PrayerCard } from "@/components/card/prayerCard";
 import { Conteiner } from "@/components/conteineres/conteiner";
 import { ProgressCard } from "@/components/progressCard";
 import { DataConsecration, DataConsecrationProps } from "@/data/consecration";
 import { ProgressProps, useProgress } from "@/hooks/progress";
-import { useFocusEffect } from "expo-router";
+import { Link, useFocusEffect } from "expo-router";
 import { useCallback, useRef, useState } from "react";
-import { ScrollView } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 
 interface DataProps extends DataConsecrationProps {
   value?: number;
@@ -26,15 +25,6 @@ export default function Consecration() {
     setInfo(data);
     defineProgress(data);
   };
-
-  const onClose = () => {
-    getProgress();
-    BottomSheetRef.current?.close();
-  };
-
-  function openBottonSheet() {
-    BottomSheetRef.current?.expand();
-  }
 
   function defineProgress(information: ProgressProps) {
     const newData: DataProps[] = [...DataConsecration];
@@ -88,13 +78,14 @@ export default function Consecration() {
                 type="consecration"
               />
             ))}
-          <Button onPress={openBottonSheet}>
-            <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
-          </Button>
+          <Link href={{ pathname: "/adjustment" }} asChild>
+            <TouchableOpacity className="flex justify-center items-center my-3">
+              <ButtonText text="Precisa ajustar seu progresso?" className="text-gray-400" />
+            </TouchableOpacity>
+          </Link>
         </ScrollView>
         {/* <Button text="Teste" onPress={async () => await progress.testes()} /> */}
       </Conteiner.Box>
-      <BottonSheetAdjust ref={BottomSheetRef} limit={33} onClose={onClose} />
     </Conteiner>
   );
 }
