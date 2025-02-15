@@ -42,13 +42,6 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <Cheer width={28} height={28} fill={color} />,
         }}
       />
-      <Tabs.Screen
-        name="liturgy"
-        options={{
-          title: "Liturgia",
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons size={28} name="book-outline" color={color} />,
-        }}
-      />
     </Tabs>
   );
 }
