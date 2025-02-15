@@ -128,7 +128,7 @@ export const DataPrayers: DataPrayersProps[] = [
         },
         text: [
           "Vinde, Espírito Criador,",
-          "visitai as almas dos Vossos,",
+          "visitai as almas dos vossos,",
           "enchei de graça celestial,",
           "os corações que criastes.",
           " ",
@@ -137,7 +137,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "fonte viva, o fogo, a caridade,",
           "a unção dos espirituais.",
           " ",
-          "Com os Vossos sete dons,",
+          "Com os vossos sete dons,",
           "sois o dedo da direita de Deus,",
           "Solene promessa do Pai,",
           "Inspirando nossas palavras.",
@@ -291,14 +291,14 @@ export const DataPrayers: DataPrayersProps[] = [
           "Pela vossa santa aparição na transfiguração do Senhor,",
           "Pela vossa vinda sobre os discípulos do Senhor,",
           "No dia do juízo,",
-          "Ainda que pecadores,nós vos rogamos, ouví-nos.",
+          "Ainda que pecadores,nós vos rogamos, ouvi-nos.",
           "",
           "Para que nos perdoeis,",
           "Para que vos digneis vivificar e santificar todos os membros da Igreja,",
           "Para que vos digneis conceder-nos o dom da verdadeira piedade, devoção e oração,",
           "Para que vos digneis inspirar-mos sinceros afetos de misericórdia e de caridade,",
           "Para que vos digneis criar em nós um espírito novo e um coração puro,",
-          "Para que vos digneis conceder-nos verdadeira paz e tranqüilidade no coração,",
+          "Para que vos digneis conceder-nos verdadeira paz e tranquilidade no coração,",
           "Para que vos digneis fazer-nos dignos e fortes, para suportar as perseguições pela justiça,",
           "Para que vos digneis confirmar-nos em vossa graça,",
           "Para que vos digneis receber-nos o número dos vossos eleitos,",
@@ -308,7 +308,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "Cordeiro de Deus que tirais os pecados do mundo, envia-nos o Espírito Santo.",
           "Cordeiro de Deus que tirais os pecados do mundo, mandai-nos o Espírito prometido do Pai.",
           "Cordeiro de Deus que tirais os pecados do mundo, dai-nos o Espírito bom.",
-          "Espírito Santo, ouví-nos.",
+          "Espírito Santo, ouvi-nos.",
           "Espírito Consolador, atendei-nos.",
           "",
           "V. Enviai o vosso Espírito e tudo será criado.",
@@ -471,7 +471,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "Causa da nossa alegria,",
           "Vaso espiritual,",
           "Vaso honorífico,",
-          "Vaso insígne de devoção,",
+          "Vaso insigne de devoção,",
           "Rosa mística,",
           "Torre de David,",
           "Torre de marfim,",
@@ -618,7 +618,7 @@ export const DataPrayers: DataPrayersProps[] = [
         text: [
           "Vós sois, ó Jesus, o Cristo, meu Pai santo, meu Deus misericordioso, meu Rei infinitamente grande; sois meu bom pastor, meu único mestre, meu auxílio cheio de bondade, meu bem-amado de uma beleza maravilhosa, meu pão vivo, meu sacerdote eterno, meu guia para a pátria, minha verdadeira luz, minha santa doçura, meu reto caminho, sapiência minha preclara, minha pura simplicidade, minha paz e concórdia; sois, enfim, toda a minha salvaguarda, minha herança preciosa, minha eterna salvação…",
           "",
-          "Ó Jesus Cristo, amável Senhor, por que, em toda a minha vida, amei, por que desejei outra coisa senão vós? Onde estava eu quando não pensava em vós? Ah! que, pelo menos, a partir deste momento meu coração só deseje a vós e por vós se abrase, Senhor Jesus! Desejos de minha alma, correi, que já bastante tardastes; apressai-vos para o fim a que aspirais; procurai em verdade aquele que procurais. Ó Jesus, anátema seja quem não vos ama. Aquele que não vos ama seja repleto de amarguras. Ó doce Jesus, sede o amor, as delícias, a admiração de todo coração dignamente consagrado à vossa glória. Deus de meu coração e minha partilha, Jesus Cristo, que em vós meu coraçao desfaleça, e sede vós mesmo a minha vida. Acenda-se em minha alma a brasa ardente de vosso amor e se converta num incêndio todo divino, a arder para sempre no altar de meu coração; que inflame o íntimo do meu ser, e abrase o âmago de minha alma; para que no dia de minha morte eu apareça diante de vós inteiramente consumido em vosso amor.",
+          "Ó Jesus Cristo, amável Senhor, por que, em toda a minha vida, amei, por que desejei outra coisa senão vós? Onde estava eu quando não pensava em vós? Ah! que, pelo menos, a partir deste momento meu coração só deseje a vós e por vós se abrase, Senhor Jesus! Desejos de minha alma, correi, que já bastante tardastes; apressai-vos para o fim a que aspirais; procurai em verdade aquele que procurais. Ó Jesus, anátema seja quem não vos ama. Aquele que não vos ama seja repleto de amarguras. Ó doce Jesus, sede o amor, as delícias, a admiração de todo coração dignamente consagrado à vossa glória. Deus de meu coração e minha partilha, Jesus Cristo, que em vós meu coração desfaleça, e sede vós mesmo a minha vida. Acenda-se em minha alma a brasa ardente de vosso amor e se converta num incêndio todo divino, a arder para sempre no altar de meu coração; que inflame o íntimo do meu ser, e abrase o âmago de minha alma; para que no dia de minha morte eu apareça diante de vós inteiramente consumido em vosso amor.",
           "",
           "Amém.",
         ],
@@ -1019,7 +1019,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "e bendito é o fruto do vosso ventre, Jesus.",
           "Santa Maria, Mãe de Deus,",
           "rogai por nós pecadores,",
-          "agora e na hora da nossa morte. Amem",
+          "agora e na hora da nossa morte. Amém",
         ],
       },
       la: {
@@ -1055,7 +1055,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "foi crucificado, morto e sepultado,",
           "desceu à mansão dos mortos,",
           "ressuscitou ao terceiro dia,",
-          "subiu aos Céus,",
+          "subiu aos céus,",
           "está sentado à direita de Deus Pai todo-poderoso,",
           "de onde há de vir a julgar os vivos e os mortos.",
           "Creio no Espírito Santo",
@@ -1100,7 +1100,7 @@ export const DataPrayers: DataPrayersProps[] = [
     content: {
       "pt-br": {
         text: [
-          "Pai nosso, que estais no Céu,",
+          "Pai nosso, que estais no céu,",
           "santificado seja o vosso nome,",
           "venha a nós o vosso reino,",
           "seja feita a vossa vontade,",
@@ -1127,7 +1127,7 @@ export const DataPrayers: DataPrayersProps[] = [
           "sicut et nos dimíttimus debitóribus nostris.",
           "Et ne nos indúcas in tentatiónem.",
           "Sed líbera nos a malo.",
-          "Amem.",
+          "Amen.",
         ],
       },
     },
@@ -1141,7 +1141,7 @@ export const DataPrayers: DataPrayersProps[] = [
     content: {
       "pt-br": {
         text: [
-          "Gloria ao Pai, ao Filho e ao Espírito Santo, assim como era no princípio, agora e sempre e por todos os séculos dos séculos, Amém.",
+          "Glória ao Pai, ao Filho e ao Espírito Santo, assim como era no princípio, agora e sempre e por todos os séculos dos séculos. Amém.",
         ],
       },
       la: {
@@ -1183,7 +1183,7 @@ export const DataPrayers: DataPrayersProps[] = [
       "pt-br": {
         text: [
           "Uno-me a todos os santos que estão no Céu, a todos os justos que estão sobre a Terra, a todas as almas fiéis que estão neste lugar. Uno-me a Vós, meu Jesus, para louvar dignamente Vossa Santa Mãe, e louvar-Vos a Vós, nela e por Ela. Renuncio a todas as distrações que me vierem durante este Rosário, que quero recitar com modéstia, atenção e devoção, como se fosse o último da minha vida.",
-          "Nós Vos oferecemos, Trindade Santíssima, este Credo, para honrar os mistérios todos de nossa Fé; este Pater (Pai Nosso) e estas três Ave-Marias, para honrar a unidade de vossa essência e a trindade de vossas pessoas. Pedimo-Vos uma fé viva, uma esperança firme e uma caridade ardente. Assim seja.",
+          "Nós vos oferecemos, Trindade Santíssima, este Credo, para honrar os mistérios todos de nossa fé, este Pai Nosso e estás três Ave-Marias, para honrar a unidade de vossa essência e a trindade de vossas pessoas. Pedimos-vos uma fé viva, uma esperança firme e uma caridade ardente. Assim seja.",
         ],
       },
     },
