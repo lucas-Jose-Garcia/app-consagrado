@@ -1,11 +1,11 @@
-import { ScrollView, Switch } from "react-native";
+import { ScrollView, Switch, TouchableOpacity } from "react-native";
 import { XStack, YStack } from "../conteineres/stacks";
 import { Paragraph } from "../text/paragraph";
 import { ContentProps } from "@/data/prayers";
 import { IconButton } from "../IconButton";
 import { useState } from "react";
 import { colors } from "@/styles/colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { cn } from "@/lib/utils";
 
 interface PrayerTextProps {
@@ -27,17 +27,21 @@ export function PrayerText({ content, translate, setYoutube }: PrayerTextProps) 
             {content.media?.youtubeId && (
               <XStack className={cn("w-full  pb-4 px-4", translate?.text ? "justify-between" : "justify-center")}>
                 <XStack className="gap-3">
-                  <Paragraph className="font-bold text-lg" text="Assista:" />
-                  <IconButton AntDesignIcon="youtube" onPress={setYoutube} />
+                  <TouchableOpacity activeOpacity={0.7} onPress={setYoutube}>
+                    <XStack className="items-center gap-3 mr-4">
+                      <AntDesign name="youtube" size={24} color={colors.gray[100]} />
+                      <Paragraph text="assistir" className="uppercase font-bold" />
+                    </XStack>
+                  </TouchableOpacity>
                 </XStack>
                 {translate?.text && (
                   <XStack className="gap-3">
-                    <Paragraph className="font-bold text-lg" text="Traduzir:" />
-                    <IconButton
-                      MaterialCommunityIcon="google-translate"
-                      onPress={toggleTranslate}
-                      active={showTranslate}
-                    />
+                    <TouchableOpacity activeOpacity={0.7} onPress={toggleTranslate}>
+                      <XStack className="items-center gap-3 mr-4">
+                        <MaterialCommunityIcons name="google-translate" size={24} color={colors.gray[100]} />
+                        <Paragraph text="traduzir" className="uppercase font-bold" />
+                      </XStack>
+                    </TouchableOpacity>
                   </XStack>
                 )}
               </XStack>
