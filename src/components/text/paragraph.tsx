@@ -8,18 +8,23 @@ export interface ParagraphProps extends TextProps {
   children?: ReactNode;
 }
 
-export function Paragraph({
-  text,
-  disabled = false,
-  children,
-  className,
-  ...rest
-}: ParagraphProps) {
+export function Paragraph({ text, disabled = false, children, className, ...rest }: ParagraphProps) {
   const colorText = disabled ? "text-gray-500" : "text-gray-100";
+  const parts = text.split(/\*\*([^*]+)\*\*/g);
+
   return (
     <Text className={cn("font-body", colorText, className)} {...rest}>
       {children && children}
-      {text}
+      {parts.map((part, index) => {
+        if (index % 2 === 0) {
+          return part;
+        }
+        return (
+          <Text className="font-body font-bold text-lg" key={index}>
+            {part}
+          </Text>
+        );
+      })}
     </Text>
   );
 }

@@ -25,6 +25,7 @@ export function IndividualPrayer({ prayer, totleYoutube }: IndividualPrayer) {
           renderItem: (
             <PrayerText
               content={prayer?.content["la"]}
+              translate={prayer?.content["pt-br"]}
               setYoutube={() => totleYoutube(prayer?.content["la"]?.media?.youtubeId ?? "")}
             />
           ),

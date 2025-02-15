@@ -1,20 +1,26 @@
 import { colors } from "@/styles/colors";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 
 interface IconButtonProps extends TouchableOpacityProps {
-  icon: keyof typeof AntDesign.glyphMap;
+  AntDesignIcon?: keyof typeof AntDesign.glyphMap;
+  MaterialCommunityIcon?: keyof typeof MaterialCommunityIcons.glyphMap;
   active?: boolean;
 }
 
-export function IconButton({ icon, active, ...rest }: IconButtonProps) {
+export function IconButton({ AntDesignIcon, MaterialCommunityIcon, active, ...rest }: IconButtonProps) {
   return (
     <TouchableOpacity activeOpacity={0.7} {...rest}>
-      <AntDesign
-        name={icon}
-        size={24}
-        color={active ? colors.gray[300] : colors.gray[100]}
-      />
+      {AntDesignIcon && (
+        <AntDesign name={AntDesignIcon} size={24} color={active ? colors.gray[300] : colors.gray[100]} />
+      )}
+      {MaterialCommunityIcon && (
+        <MaterialCommunityIcons
+          name={MaterialCommunityIcon}
+          size={24}
+          color={active ? colors.gray[300] : colors.gray[100]}
+        />
+      )}
     </TouchableOpacity>
   );
 }
