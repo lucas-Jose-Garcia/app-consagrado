@@ -98,7 +98,7 @@ export function RosaryView({
             </Card>
           )}
           {currentRosaryStep.prayers.map((prayer) => (
-            <RosaryPrayerCard key={prayer.prayerId} prayerId={prayer.prayerId} />
+            <RosaryPrayerCard key={prayer.prayerId} prayerId={prayer.prayerId} occurrences={prayer.occurrences} />
           ))}
           <XStack className="w-full justify-between px-1 py-4">
             <FloatingButton onPress={() => scrollToStep(step - 1)} icon="navigate-before" disabled={step === 0} />

@@ -2,7 +2,6 @@ import { ScrollView, Switch, TouchableOpacity } from "react-native";
 import { XStack, YStack } from "../conteineres/stacks";
 import { Paragraph } from "../text/paragraph";
 import { ContentProps } from "@/data/prayers";
-import { IconButton } from "../IconButton";
 import { useState } from "react";
 import { colors } from "@/styles/colors";
 import { AntDesign, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
