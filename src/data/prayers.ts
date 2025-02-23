@@ -1256,3 +1256,8 @@ export const getPrayers = (ids: string[]) => {
 
   return result;
 };
+
+export const getImagePrayer = (id: string) => {
+  const prayer = getPrayer(id);
+  return prayer.image;
+};

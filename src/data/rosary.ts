@@ -1,7 +1,11 @@
 import uuid from "react-native-uuid";
 
 import { PrayersProps, daysOfNumber } from "./global";
-import { DataPrayersProps, getPrayer } from "./prayers";
+import { DataPrayersProps, getImagePrayer, getPrayer } from "./prayers";
+
+export interface RosaryStepsProps extends Omit<MysteriesProps, "complement"> {
+  prayers: RosaryItemProps[];
+}
 
 interface RosaryItemProps {
   prayerId: string;
@@ -506,3 +510,60 @@ export function currentRosary(): PrayersProps {
   const item = DataRosary.contemplations.groups.filter((x) => x.days.includes(day))[0];
   return ListRosary.filter((x) => x.id === item.id)[0];
 }
+
+//#region Buscar Etapas do Rosário
+
+function getRosaryByMysteryId(id: string): MysteriesProps[] {
+  const group = DataRosary.contemplations.groups.filter((x) => x.id === id)[0];
+  const mysteries: MysteriesProps[] = [];
+
+  if (typeof group.mysteries[0] === "string") {
+    const mysteryIds = group.mysteries as string[];
+    mysteryIds.forEach((mysteryId) => {
+      const mysteryGroup = DataRosary.contemplations.groups.filter((x) => x.id === mysteryId)[0];
+      mysteries.push(...(mysteryGroup.mysteries as MysteriesProps[]));
+      mysteries.forEach((mystery, index) => {
+        mystery.order = index + 1;
+      });
+    });
+  } else {
+    mysteries.push(...(group.mysteries as MysteriesProps[]));
+  }
+
+  return mysteries;
+}
+
+export function getRosaryStepsById(id: string): RosaryStepsProps[] {
+  const steps: RosaryStepsProps[] = [];
+
+  // Adiciona etapa inicial
+  steps.push({
+    order: 0,
+    title: "Orações Iniciais",
+    image: getImagePrayer(DataRosary.initial[0].prayerId),
+    offering: "",
+    prayers: DataRosary.initial,
+  });
+
+  // Adiciona mistérios
+  const mysteries = getRosaryByMysteryId(id);
+  mysteries.forEach((mystery) => {
+    steps.push({
+      ...mystery,
+      prayers: DataRosary.contemplations.sequence,
+    });
+  });
+
+  // Adiciona etapa final
+  steps.push({
+    order: mysteries.length + 1,
+    title: "Orações Finais",
+    image: getImagePrayer(DataRosary.finish[0].prayerId),
+    offering: "",
+    prayers: DataRosary.finish,
+  });
+
+  return steps;
+}
+
+//#endregion
