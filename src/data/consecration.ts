@@ -18,9 +18,9 @@ export const DataConsecration: DataConsecrationProps[] = [
   {
     id: "f0f0f7c5-b4d0-4a35-b99e-83edd6026421",
     title: "Doze dias Preliminares",
-    description: "Enpregandos em desapegar-se do espírito do mundo.",
+    description: "Empregados em desapegar-se do espírito do mundo.",
     explanation:
-      "Para desapego do espírito do mundo e para a aquisição do espírito de Deus, Na qual se medita em nossa vocação à santidade, desprendendo-se de tudo que possa atrapalhar a sermos Santos que possa nos impedir a ir para o céu.",
+      "Para desapego do espírito do mundo e para a aquisição do espírito de Deus, na qual se medita em nossa vocação à santidade, desprendendo-se de tudo que possa atrapalhar a sermos santos e que possa nos impedir de ir para o céu.",
     image:
       "https://images.pexels.com/photos/1009355/pexels-photo-1009355.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     days: 12,
@@ -41,7 +41,7 @@ export const DataConsecration: DataConsecrationProps[] = [
     title: "Primeira semana",
     description: "Empregada em adquirir o conhecimento de si mesmo.",
     explanation:
-      "Para o conhecimento de si mesmo. Trata se de um período que fazemos um profundo exame de consciência, a partir do que, devemos nos aperfeiçoar, buscando em tudo sermos agradáveis a Deus.",
+      "Para o conhecimento de si mesmo. Trata-se de um período em que fazemos um profundo exame de consciência, a partir do qual devemos nos aperfeiçoar, buscando em tudo sermos agradáveis a Deus.",
     image:
       "https://images.pexels.com/photos/805002/pexels-photo-805002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     days: 7,
@@ -62,7 +62,7 @@ export const DataConsecration: DataConsecrationProps[] = [
     title: "Segunda semana",
     description: "Empregada em adquirir o conhecimento da Santíssima Virgem.",
     explanation:
-      "Para o conhecimento da Santíssima Virgem de sua pessoa, de sua missão das graças das quais ela é repleta, de suas sublimes virtudes, de seus privilégios, etc. De forma que conhecendo-a melhor possamos amá-la mais e o honrá-la como ela merece ser honrada.",
+      "Para o conhecimento da Santíssima Virgem, de sua pessoa, de sua missão, das graças das quais ela é repleta, de suas sublimes virtudes, de seus privilégios, etc. De forma que, conhecendo-a melhor, possamos amá-la mais e honrá-la como ela merece ser honrada.",
     image:
       "https://media.vaticannews.va/media/content/dam-archive/vaticannews/multimedia/2018/10/29/taglio%20di%20luce.jpg/_jcr_content/renditions/cq5dam.thumbnail.cropped.750.422.jpeg",
     days: 7,
@@ -83,7 +83,7 @@ export const DataConsecration: DataConsecrationProps[] = [
     title: "Terceira semana",
     description: "Empregada em adquirir o conhecimento de Jesus Cristo.",
     explanation:
-      "Para o conhecimento de Jesus Cristo nosso fim Último, nosso grande Deus e Senhor. Aqui devemos meditar o mistério da Vinda, da Vida, Paixão, Morte e Glorificação de Jesus Cristo, o filho de Deus. Devemos contemplar a encantadora vida de Jesus, sua pessoa e sua doutrina, para que assim possamos crer com profunda convicção, amá-lo como com amor abrasado de forma a despertar em nós um grande desejo de fazê-lo conhecido amado e adorado por todos.",
+      "Para o conhecimento de Jesus Cristo, nosso fim último, nosso grande Deus e Senhor. Aqui devemos meditar o mistério da vinda, da vida, paixão, morte e glorificação de Jesus Cristo, o Filho de Deus. Devemos contemplar a encantadora vida de Jesus, sua pessoa e sua doutrina, para que assim possamos crer com profunda convicção, amá-lo com amor abrasado, de forma a despertar em nós um grande desejo de fazê-lo conhecido, amado e adorado por todos.",
     image:
       "https://images.pexels.com/photos/11606781/pexels-photo-11606781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     days: 7,
