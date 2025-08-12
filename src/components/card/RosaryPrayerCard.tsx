@@ -4,16 +4,9 @@ import { Paragraph } from "../text/paragraph";
 import { H2 } from "../text/headings";
 import { Card } from "./Card";
 import { XStack } from "../conteineres/stacks";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { IconButton } from "../IconButton";
-import { colors } from "@/styles/colors";
-import Animated, {
-  useAnimatedStyle,
-  withTiming,
-  interpolateColor,
-  withSpring,
-  useSharedValue,
-} from "react-native-reanimated";
+import { AnimatedRosaryDot } from "./AnimatedRosaryDot";
 
 interface PrayerProps {
   prayerId: string;
@@ -31,36 +24,6 @@ export function RosaryPrayerCard({ prayerId, occurrences = 0 }: PrayerProps) {
 
   const occurrencesArray = Array.from({ length: occurrences }, (_, index) => index + 1);
 
-  function AnimatedRosaryDot({ active }: { active: boolean }) {
-    const animation = useSharedValue(active ? 1 : 0);
-
-    useEffect(() => {
-      animation.value = withTiming(active ? 1 : 0, { duration: 350 });
-    }, [active]);
-
-    const animatedStyle = useAnimatedStyle(() => {
-      return {
-        backgroundColor: interpolateColor(animation.value, [0, 1], [colors.gray[400], colors.secondary[500]]),
-        transform: [
-          {
-            scale: withSpring(animation.value === 1 ? 1.15 : 1, { damping: 10 }),
-          },
-        ],
-      };
-    });
-
-    return (
-      <Animated.View
-        style={[
-          { height: 20, width: 20, borderRadius: 10, alignItems: "center", justifyContent: "center", margin: 4 },
-          animatedStyle,
-        ]}
-      >
-        <View style={{ height: 12, width: 12, backgroundColor: colors.gray[900], borderRadius: 6 }} />
-      </Animated.View>
-    );
-  }
-
   return (
     <Card>
       <H2>{prayer.title}</H2>
@@ -71,13 +34,13 @@ export function RosaryPrayerCard({ prayerId, occurrences = 0 }: PrayerProps) {
         {occurrences > 1 && (
           <>
             <Paragraph text={`(${occurrences} vezes)`} />
-            <XStack className="justify-center items-center gap-4 pt-2">
+            <XStack className="justify-center items-center gap-1 pt-2">
               <IconButton
                 EntypoIcon="minus"
                 disabled={currentOccurrences == 0}
                 onPress={() => setCurrentOccurrences((prev) => prev - 1)}
               />
-              <XStack className="gap-2">
+              <XStack className="gap-1 flex-wrap justify-center ml-1 mr-1">
                 {occurrencesArray.map((_, index) => (
                   <AnimatedRosaryDot key={index} active={index < currentOccurrences} />
                 ))}
