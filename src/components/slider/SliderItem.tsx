@@ -4,7 +4,7 @@ import { H2 } from "../text/headings";
 import { LinearGradient } from "expo-linear-gradient";
 import { ProgressBar } from "../progressBar";
 import Animated, { Extrapolation, SharedValue, interpolate, useAnimatedStyle } from "react-native-reanimated";
-import { Link, router } from "expo-router";
+import { Href, Link, router } from "expo-router";
 
 interface SliderProps {
   title: string;
@@ -13,6 +13,7 @@ interface SliderProps {
   scrollX: SharedValue<number>;
   index: number;
   id: string;
+  link: Href<string>;
   progress?: {
     current: number;
     total: number;
@@ -22,7 +23,7 @@ interface SliderProps {
 
 const { width, height } = Dimensions.get("screen");
 
-export function SliderItem({ title, description, image, scrollX, index, id, progress = undefined }: SliderProps) {
+export function SliderItem({ title, description, image, scrollX, index, id, link, progress = undefined }: SliderProps) {
   const itemWidth = width * 0.85;
   const rnAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -48,10 +49,7 @@ export function SliderItem({ title, description, image, scrollX, index, id, prog
   });
 
   const onPress = () => {
-    router.push({
-      pathname: "/prayer/[id]",
-      params: { id, type: "consecration", current: "ativo" },
-    });
+    router.push(link);
   };
   return (
     <Animated.View

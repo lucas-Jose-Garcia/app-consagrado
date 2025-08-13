@@ -1,78 +1,75 @@
-import { useCallback, useState } from "react";
-import { useFocusEffect, useLocalSearchParams } from "expo-router";
-
+import { useMemo } from "react";
+import { Text, ActivityIndicator } from "react-native";
 import { Conteiner } from "@/components/conteineres/conteiner";
-import { DataPrayersProps, getPrayer, getPrayers } from "@/data/prayers";
-import { Conver, ConverProps } from "@/components/cover";
-import { GroupMysteriesProps, getRosary } from "@/data/rosary";
-import { DataConsecrationProps, getStageConsecration } from "@/data/consecration";
-import { PrayersProps } from "@/data/global";
 import { IndividualPrayer } from "@/components/individualPrayer";
 import { RosaryDetails } from "@/components/rosaryDetails";
 import { ConsecrationDetails } from "@/components/consecrationDetails";
+import { Conver } from "@/components/cover";
+import { usePrayerData } from "./usePrayerData";
+import { Message } from "@/components/message/Message";
+
+type PrayerType = "simple" | "rosary" | "consecration";
+type CurrentStatus = "ativo" | "inativo";
 
 export default function Prayer() {
-  const { id, type, current } = useLocalSearchParams<{
-    id: string;
-    type?: "simple" | "rosary" | "consecration";
-    current?: "ativo" | "inativo";
-  }>();
-  const [player, setPlayer] = useState<DataPrayersProps | null>(null);
-  const [rosary, setRosary] = useState<GroupMysteriesProps | null>(null);
-  const [consecration, setConsecration] = useState<DataConsecrationProps | null>(null);
-  const [infoConsecration, setInfoConsecration] = useState<PrayersProps[] | null>(null);
-  const [cover, setCover] = useState<ConverProps | null>(null);
-  const [youtubeId, setYoutubeId] = useState("");
+  const {
+    type,
+    current,
+    player,
+    rosary,
+    consecration,
+    infoConsecration,
+    cover,
+    youtubeId,
+    toggleYoutube,
+    isLoading,
+    error,
+  } = usePrayerData();
 
-  const isIndividualPrayer = !rosary && !infoConsecration && player;
-  const isRosary = !infoConsecration && rosary && id;
-  const isConsecration = consecration && infoConsecration;
+  const renderContent = useMemo(() => {
+    if (isLoading) {
+      return (
+        <Conteiner.Box className="flex-1 justify-center items-center">
+          <ActivityIndicator size="large" />
+          <Text className="text-gray-100 mt-4">Carregando...</Text>
+        </Conteiner.Box>
+      );
+    }
 
-  function totleYoutube(id: string) {
-    setYoutubeId((prevState) => (prevState === id ? "" : id));
-  }
+    if (error) {
+      return <Message message={error} />;
+    }
 
-  useFocusEffect(
-    useCallback(() => {
-      if (id !== undefined && type === "simple") {
-        const data = getPrayer(id);
-        setPlayer(data);
-        setCover({ image: data.image, title: data.title });
-      }
+    switch (type as PrayerType) {
+      case "simple":
+        if (!player) return <Message message="Oração não encontrada" />;
+        return <IndividualPrayer prayer={player} totleYoutube={toggleYoutube} />;
 
-      if (id !== undefined && type === "rosary") {
-        const data = getRosary(id);
-        setRosary(data);
-        setCover({ image: data.image, title: data.title });
-      }
+      case "rosary":
+        if (!rosary) return <Message message="Rosário não encontrado" />;
+        return <RosaryDetails rosary={rosary} id={rosary.id} />;
 
-      if (id !== undefined && type === "consecration") {
-        const data = getStageConsecration(id);
-        setConsecration(data);
+      case "consecration":
+        if (!consecration || !infoConsecration) {
+          return <Message message="Consagração não encontrada" />;
+        }
+        return (
+          <ConsecrationDetails
+            consecration={consecration}
+            infoConsecration={infoConsecration}
+            current={(current as CurrentStatus) === "ativo"}
+          />
+        );
 
-        setCover({ image: data.image, title: data.title });
+      default:
+        return <Message message="Tipo de oração não reconhecido" />;
+    }
+  }, [type, current, player, rosary, consecration, infoConsecration, toggleYoutube, isLoading, error]);
 
-        const players = data.prayers.map((x) => x.prayerId);
-        const info = getPrayers(players);
-        setInfoConsecration(info);
-      }
-    }, [])
-  );
   return (
     <Conteiner>
       {cover && <Conver image={cover.image} title={cover.title} youtubeId={youtubeId} />}
-
-      {isIndividualPrayer && <IndividualPrayer prayer={player} totleYoutube={totleYoutube} />}
-
-      {isRosary && <RosaryDetails rosary={rosary} id={id} />}
-
-      {isConsecration && (
-        <ConsecrationDetails
-          consecration={consecration}
-          infoConsecration={infoConsecration}
-          current={current === "ativo"}
-        />
-      )}
+      {renderContent}
     </Conteiner>
   );
 }

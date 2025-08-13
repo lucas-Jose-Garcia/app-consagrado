@@ -40,7 +40,7 @@ export default function Layout() {
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="prayer" />
           <Stack.Screen name="rosary" />
-          <Stack.Screen name="adjustment" />
+          <Stack.Screen name="selectDate" />
         </Stack>
         <StatusBar style="light" />
       </View>

@@ -4,12 +4,14 @@ import { FlatList } from "react-native-gesture-handler";
 import Animated, { useAnimatedScrollHandler, useSharedValue } from "react-native-reanimated";
 import { Pagination } from "./Pagination";
 import { useRef, useState } from "react";
+import { Href } from "expo-router";
 
 export interface SliderProps {
+  id: string;
   title: string;
   description: string;
   image: string;
-  id: string;
+  link: Href<string>;
 }
 
 export function Slider({ data }: { data: SliderProps[] }) {
@@ -48,6 +50,7 @@ export function Slider({ data }: { data: SliderProps[] }) {
             scrollX={scrollX}
             index={index}
             id={item.id}
+            link={item.link}
           />
         )}
         keyExtractor={(item) => item.title}
