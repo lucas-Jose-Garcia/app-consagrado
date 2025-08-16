@@ -4,8 +4,10 @@ import { InlineHeader } from "@/components/header/inlineHeader";
 import { ItemDateConsecration } from "@/components/itemDateConsecration";
 import { getConsecrationDatesByProximity } from "@/data/dates";
 import { useRecord } from "@/hooks/record";
+import { useAppContext } from "@/contexts/appContex";
 
 export default function SelectDate() {
+  const { sliderRef } = useAppContext();
   const consecrationDates = getConsecrationDatesByProximity();
   const record = useRecord();
 
@@ -17,7 +19,7 @@ export default function SelectDate() {
         renderItem={({ item }) => (
           <ItemDateConsecration
             item={item}
-            onSelectDate={() => record.initializeRecord(new Date(item.year, item.month - 1, item.day))}
+            onSelectDate={() => record.initializeRecord(new Date(item.year, item.month - 1, item.day), sliderRef)}
           />
         )}
         keyExtractor={(item) => item.id}

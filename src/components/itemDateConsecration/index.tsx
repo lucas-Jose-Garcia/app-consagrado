@@ -1,6 +1,6 @@
 import { View, TouchableOpacity } from "react-native";
 import { Card } from "../card/Card";
-import { H2 } from "../text/headings";
+import { H2, H3 } from "../text/headings";
 import { Paragraph } from "../text/paragraph";
 import { XStack, YStack } from "../conteineres/stacks";
 import { router } from "expo-router";
@@ -14,7 +14,7 @@ export interface DateConsecrationItem {
 
 interface SelectDateConsecrationProps {
   item: DateConsecrationItem;
-  onSelectDate?: (item: DateConsecrationItem) => void;
+  onSelectDate: (item: DateConsecrationItem) => void;
 }
 
 export function ItemDateConsecration({ item, onSelectDate }: SelectDateConsecrationProps) {
@@ -38,12 +38,7 @@ export function ItemDateConsecration({ item, onSelectDate }: SelectDateConsecrat
   };
 
   const handlePress = (item: DateConsecrationItem) => {
-    if (onSelectDate) {
-      onSelectDate(item);
-    } else {
-      // Comportamento padrão - pode ser usado para debug ou ação alternativa
-      console.log("Data selecionada:", item.title);
-    }
+    onSelectDate(item);
     router.back();
   };
 
@@ -55,11 +50,6 @@ export function ItemDateConsecration({ item, onSelectDate }: SelectDateConsecrat
             <H2>{item.title}</H2>
             <Paragraph text={formatDate(item.month, item.day)} className="text-gray-500 mt-1" />
           </YStack>
-          {onSelectDate && (
-            <View className="ml-4">
-              <View className="w-6 h-6 rounded-full border-2 border-gray-300" />
-            </View>
-          )}
         </XStack>
       </Card>
     </TouchableOpacity>

@@ -9,7 +9,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { SliderRef } from "@/components/slider";
+import { AppContextProvider } from "@/contexts/appContex";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,16 +36,18 @@ export default function Layout() {
   }
 
   return (
-    <GestureHandlerRootView>
-      <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="prayer" />
-          <Stack.Screen name="rosary" />
-          <Stack.Screen name="selectDate" />
-        </Stack>
-        <StatusBar style="light" />
-      </View>
-    </GestureHandlerRootView>
+    <AppContextProvider>
+      <GestureHandlerRootView>
+        <View className="flex-1 bg-gray-950" style={{ paddingTop: insets.top }}>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="prayer" />
+            <Stack.Screen name="rosary" />
+            <Stack.Screen name="selectDate" />
+          </Stack>
+          <StatusBar style="light" />
+        </View>
+      </GestureHandlerRootView>
+    </AppContextProvider>
   );
 }
