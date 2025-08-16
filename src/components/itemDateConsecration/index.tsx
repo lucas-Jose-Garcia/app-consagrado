@@ -43,8 +43,8 @@ export function ItemDateConsecration({ item, onSelectDate }: SelectDateConsecrat
     } else {
       // Comportamento padrão - pode ser usado para debug ou ação alternativa
       console.log("Data selecionada:", item.title);
-      router.back();
     }
+    router.back();
   };
 
   return (

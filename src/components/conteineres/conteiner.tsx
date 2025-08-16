@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { View, ViewProps } from "react-native";
+import { SafeAreaView, View, ViewProps } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import { colors } from "@/styles/colors";
@@ -22,9 +22,9 @@ interface ConteinerHeaderProps extends ViewProps {
 
 function Conteiner({ className, children, ...rest }: ConteinerProps) {
   return (
-    <View className={cn("flex-1 bg-gray-950", className)} {...rest}>
+    <SafeAreaView className={cn("flex-1 bg-gray-950", className)} {...rest}>
       {children}
-    </View>
+    </SafeAreaView>
   );
 }
 

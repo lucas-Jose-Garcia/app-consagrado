@@ -21,5 +21,13 @@ export function useStorage<T>(key: Tables) {
     }
   }
 
-  return { get, set };
+  async function deleteItem() {
+    try {
+      await AsyncStorage.removeItem(key);
+    } catch (error) {
+      console.log("useStorage:delete", error);
+    }
+  }
+
+  return { get, set, deleteItem };
 }
